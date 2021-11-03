@@ -14,23 +14,21 @@ public class Game {
 	// =======================================
 
 	@Id
-	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "name", unique = true)
+	@Column(unique = true)
 	private String name;
 
-	@Column(name = "genre")
 	private String genre;
 
-	@Column(name = "tag")
-	private String tag;
+	private String tags;
+	
+	//private List<Championship> championships;
 
 	// =======================================
 
 	public Game() {
-		super();
 	}
 
 	public Game(Long id) {
@@ -38,22 +36,20 @@ public class Game {
 		this.id = id;
 	}
 
-	public Game(Long id, String name, String genre, String tag) {
+	public Game(Long id, String name, String genre, String tags) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.genre = genre;
-		this.tag = tag;
+		this.tags = tags;
 	}
 
-	public Game(String name, String genre, String tag) {
+	public Game(String name, String genre, String tags) {
 		super();
 		this.name = name;
 		this.genre = genre;
-		this.tag = tag;
+		this.tags = tags;
 	}
-
-	// =======================================
 
 	public Long getId() {
 		return id;
@@ -79,12 +75,12 @@ public class Game {
 		this.genre = genre;
 	}
 
-	public String getTag() {
-		return tag;
+	public String getTags() {
+		return tags;
 	}
 
-	public void setTag(String tag) {
-		this.tag = tag;
+	public void setTags(String tags) {
+		this.tags = tags;
 	}
 
 }

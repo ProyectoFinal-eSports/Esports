@@ -3,30 +3,21 @@ package com.esports.dto;
 public class GameDTO {
 
 	private Long id;
-
 	private String name;
-
 	private String genre;
-
-	private String tag;
+	private String tags;
+	private String imgUrl;
 
 	public GameDTO() {
-		super();
 	}
 
-	public GameDTO(String name, String genre, String tag) {
-		super();
-		this.name = name;
-		this.genre = genre;
-		this.tag = tag;
-	}
-
-	public GameDTO(Long id, String name, String genre, String tag) {
+	public GameDTO(Long id, String name, String genre, String tags, String imgUrl) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.genre = genre;
-		this.tag = tag;
+		this.tags = tags;
+		this.imgUrl = imgUrl;
 	}
 
 	public Long getId() {
@@ -53,12 +44,37 @@ public class GameDTO {
 		this.genre = genre;
 	}
 
-	public String getTag() {
-		return tag;
+	public String getTags() {
+		return tags;
 	}
 
-	public void setTag(String tag) {
-		this.tag = tag;
+	public void setTags(String tags) {
+		this.tags = tags;
+	}
+
+	public String getImgUrl() {
+		return imgUrl;
+	}
+
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("GameDTO [id=");
+		builder.append(id);
+		builder.append(", name=");
+		builder.append(name);
+		builder.append(", genre=");
+		builder.append(genre);
+		builder.append(", tags=");
+		builder.append(tags);
+		builder.append(", imgUrl=");
+		builder.append(imgUrl);
+		builder.append("]");
+		return builder.toString();
 	}
 
 }

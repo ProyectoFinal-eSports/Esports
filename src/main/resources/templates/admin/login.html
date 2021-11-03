@@ -1,0 +1,25 @@
+<div class="container">
+	<div class="jumbotron">
+		<h1>Login</h1>		
+	</div>
+	<div>
+		<form method="post" th:object="${user}">
+		 <fieldset>
+	        <table>
+	            <tr>
+	                <td><label>Nombre: </label></td>
+	                <td><input type="text" th:field="*{loginName}" /></td>
+	            </tr>
+	            <tr>
+	                <td><label>Password: </label></td>
+	                <td><input type="password" th:field="*{password}" /></td>
+	            </tr>
+	            <tr>
+		            <td><input type="submit" value="Entrar"/></td>
+	            </tr>
+	         </table>
+	     </fieldset>		
+		</form> 	
+		<div><p th:text="${message}" /></div>
+	</div>
+</div>

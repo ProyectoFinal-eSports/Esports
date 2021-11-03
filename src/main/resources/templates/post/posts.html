@@ -1,19 +1,17 @@
 <div class="container">
 	<div class="jumbotron">
-		<h1>Esports</h1>
-		<fieldset>
-			<legend>Menú</legend>
-		</fieldset>
+		<h1>Noticias</h1>
 	</div>
 	<div>
 		<table>
 			<tr th:each="post: ${posts}">
+			   <td>
+			   	<img style="width:200px;height:200px" th:src="@{${post.imgUrl}}" />
+			   </td>
 				<td>
-					<p>
-						<img th:src="@{${post.imgUrl}}" />
-					</p> <a th:href="@{'/post/detalle?id=' + ${post.id}}">
+					<a th:href="@{'/post/detalle?id=' + ${post.id}}">
 						<p th:text="${post.title}" />
-				</a>
+				    </a>
 					<p th:text="${post.shortText}" />
 					<p>
 						<span th:text="${#temporals.format(post.date, 'dd-MM-yyyy')}" />

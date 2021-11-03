@@ -15,8 +15,13 @@ public class GameServiceImpl implements GameService {
 
 	@Override
 	public List<GameDTO> getGameList() {
-		// TODO Auto-generated method stub
-		return null;
+		return List.of(new GameDTO(1L, "League of Legends", "MOBA", "Riot Games,Worlds", "../img/game.png"),
+				new GameDTO(2L, "CS:GO", "FPS", "Valve", "../img/game.png"));
+	}
+
+	@Override
+	public GameDTO getGame(Long id) {
+		return new GameDTO(1L, "League of Legends", "MOBA", "Riot Games,Worlds", "../img/game.png");
 	}
 
 	@Override

@@ -12,15 +12,15 @@ import javax.persistence.Table;
 public class Championship {
 
 	@Id
-	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "name", unique = true)
+	@Column(unique = true)
 	private String name;
 
-	@Column(name = "tag")
-	private String tag;
+	private String tags;
+
+	// private Game game;
 
 	public Championship() {
 		super();

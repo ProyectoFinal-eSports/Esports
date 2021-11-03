@@ -8,6 +8,8 @@ public interface GameService {
 
 	List<GameDTO> getGameList();
 
+	GameDTO getGame(Long id);
+
 	GameDTO getGameById(Long id);
 
 	GameDTO saveGame(GameDTO game);
