@@ -2,7 +2,7 @@
 	<div class="jumbotron">
 		<h1>Esports</h1>
 		<fieldset>
-			<legend>Menú</legend>
+			<legend>Menú principal</legend>
 		</fieldset>
 	</div>
 	<div>
@@ -19,6 +19,18 @@
 						<span th:text="${#temporals.format(post.date, 'dd-MM-yyyy')}" />
 						| <span th:text="${post.author}" />
 					</p>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div>
+		<table>
+			<tr th:each="game: ${games}">
+				<td><a th:href="@{'/game/detalle?id=' + ${game.id}}"> <img
+						style="width: 150px; height: 225px" th:src="@{${game.imgUrl}}" />
+				</a></td>
+				<td>
+					<p th:text="${game.name}"></p>
 				</td>
 			</tr>
 		</table>

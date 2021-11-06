@@ -31,8 +31,8 @@ public class Runner {
 
 	public void runnerData() {
 
-		Game game = new Game("League of Legends", "MOBA", "LoL,Riot Games");
-		Game gameSaved = gameRepo.save(game);
+		//Game game = new Game("League of Legends", "MOBA", "LoL,Riot Games");
+		//Game gameSaved = gameRepo.save(game);
 	}
 
 }

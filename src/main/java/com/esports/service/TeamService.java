@@ -1,5 +1,7 @@
 package com.esports.service;
 
-public interface TeamService {
+import com.esports.model.entity.Team;
 
+public interface TeamService {
+    Team getTeamById(Long id);
 }
