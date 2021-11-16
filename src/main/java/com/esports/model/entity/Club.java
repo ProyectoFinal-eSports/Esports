@@ -5,12 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "championships")
-public class Championship {
+@Table(name = "clubs")
+public class Club {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,12 +18,30 @@ public class Championship {
 	@Column(unique = true)
 	private String name;
 
+	private String location;
+
+	private String region;
+	
+	private String imgUrl;
+
 	private String tags;
 
-	@ManyToOne
-	private Game game;
+	/*
+	 * @OneToMany(mappedBy = "club") private List<Team> teams;
+	 */
 
-	public Championship() {
-		super();
+	public Club() {
+	}
+
+	public Club(Long id) {
+		this.id = id;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 }

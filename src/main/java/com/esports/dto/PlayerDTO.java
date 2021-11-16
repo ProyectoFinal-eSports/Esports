@@ -1,38 +1,21 @@
-package com.esports.model.entity;
+package com.esports.dto;
 
-import javax.persistence.*;
+public class PlayerDTO {
 
-@Entity
-@Table(name = "players")
-public class Player {
-
-	// =======================================
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(unique = true)
 	private String name;
 
 	private String role;
 
 	private String tags;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "team_id")
-	private Team team;
+	private TeamDTO team;
 
-	public Player() {
-		super();
+	public PlayerDTO() {
 	}
 
-	public Player(Long id) {
-		super();
-		this.id = id;
-	}
-
-	public Player(String name, String role, String tags, Team team) {
+	public PlayerDTO(String name, String role, String tags, TeamDTO team) {
 		super();
 		this.name = name;
 		this.role = role;
@@ -40,7 +23,7 @@ public class Player {
 		this.team = team;
 	}
 
-	public Player(Long id, String name, String role, String tags, Team team) {
+	public PlayerDTO(Long id, String name, String role, String tags, TeamDTO team) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -81,11 +64,11 @@ public class Player {
 		this.tags = tags;
 	}
 
-	public Team getTeam() {
+	public TeamDTO getTeam() {
 		return team;
 	}
 
-	public void setTeam(Team team) {
+	public void setTeam(TeamDTO team) {
 		this.team = team;
 	}
 

@@ -1,7 +1,14 @@
 package com.esports.service;
 
-import com.esports.model.entity.Team;
+import java.util.List;
+
+import com.esports.dto.TeamDTO;
 
 public interface TeamService {
-    Team getTeamById(Long id);
+
+	List<TeamDTO> getTeamList();
+
+	TeamDTO getTeamById(Long id);
+
+	TeamDTO saveHuman(TeamDTO team);
 }

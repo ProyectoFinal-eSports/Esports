@@ -24,7 +24,12 @@ public class Game {
 
 	private String tags;
 	
-	//private List<Championship> championships;
+	private String imgUrl;
+
+	/*
+	 * @ManyToOne(cascade = CascadeType.ALL) private List<Championship>
+	 * championships;
+	 */
 
 	// =======================================
 

@@ -11,12 +11,4 @@ public interface GameService {
 	GameDTO getGame(Long id);
 
 	GameDTO getGameById(Long id);
-
-	GameDTO saveGame(GameDTO game);
-
-	GameDTO updateGame(Long id, GameDTO game);
-
-	void deleteGame(Long id);
-
-	List<GameDTO> getGameListByGenre(Long id);
 }

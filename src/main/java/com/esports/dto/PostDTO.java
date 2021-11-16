@@ -101,26 +101,4 @@ public class PostDTO {
 		this.imgUrl = imgUrl;
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("PostDTO [id=");
-		builder.append(id);
-		builder.append(", date=");
-		builder.append(date);
-		builder.append(", title=");
-		builder.append(title);
-		builder.append(", shortText=");
-		builder.append(shortText);
-		builder.append(", longText=");
-		builder.append(longText);
-		builder.append(", tags=");
-		builder.append(tags);
-		builder.append(", author=");
-		builder.append(author);
-		builder.append(", imgUrl=");
-		builder.append(imgUrl);
-		builder.append("]");
-		return builder.toString();
-	}
 }

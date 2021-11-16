@@ -11,45 +11,43 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.esports.dto.PostDTO;
-import com.esports.service.PostService;
+import com.esports.dto.PlayerDTO;
+import com.esports.service.PlayerService;
 
 @Controller
-@RequestMapping("/post")
-public class PostController {
+@RequestMapping("/player")
+public class PlayerController {
 
-	public static final Logger logger = LoggerFactory.getLogger(PostController.class);
+	private static Logger logger = LoggerFactory.getLogger(PlayerController.class);
 
 	@Autowired
-	private PostService postService;
+	private PlayerService playerService;
 
 	@GetMapping
-	public String posts(ModelMap model) {
-		logger.debug("IN - posts - /");
-		logger.debug("getting post list");
-		List<PostDTO> posts = postService.getPostList();
-
+	public String players(ModelMap model) {
+		logger.debug("IN - players - /");
+		logger.debug("getting player list");
+		List<PlayerDTO> players = playerService.getPlayerList();
 		logger.debug("preparing data for view");
-		model.put("posts", posts);
-		model.put("view", "/post/posts");
-
-		logger.debug("OUT - posts - /");
+		model.put("players", players);
+		model.put("view", "/player/players");
 
 		return "/_t/frame";
 	}
 
 	@GetMapping("/detalle")
-	public String detail(@RequestParam("id") Long id, ModelMap model) {
+	public String detail(@RequestParam Long id, ModelMap model) {
 		logger.debug("IN - detail - /");
-		logger.debug("getting post detail");
-		PostDTO post = postService.getPostById(id);
+		logger.debug("getting player detail");
+		PlayerDTO player = playerService.getPlayerById(id);
 
 		logger.debug("preparing data for view");
-		model.put("post", post);
-		model.put("view", "/post/post-detail");
+		model.put("player", player);
+		model.put("view", "/player/player-detail");
 
 		logger.debug("OUT - detail - /");
 
 		return "/_t/frame";
+
 	}
 }

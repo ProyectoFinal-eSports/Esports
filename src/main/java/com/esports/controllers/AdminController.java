@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,12 +13,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.esports.dto.UserDTO;
+import com.esports.model.entity.User;
+import com.esports.service.UserService;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
 
 	public static final Logger logger = LoggerFactory.getLogger(AdminController.class);
+
+	@Autowired
+	private UserService userService;
 
 	private String message = "";
 
@@ -51,15 +57,18 @@ public class AdminController {
 	public String login(@ModelAttribute UserDTO user, ModelMap model, HttpSession session) {
 		logger.debug("IN - login");
 
-		logger.debug(user.getLoginName() + " / " + user.getPassword());
+		logger.debug(user.getLoginname() + " / " + user.getPassword());
 
-		if (validateUser(user)) {
+		User userData = userService.authUser(user.getLoginname(), user.getPassword());
+
+		if (userData != null) {
 			message = "";
-			session.setAttribute("user", user);
+			session.setAttribute("user", userData);
 			return "redirect:/admin/home";
 		}
 
 		message = "Usuario o Password incorrecto. Pruebe de nuevo !";
+		model.put("user", user);
 		model.put("view", "/admin/login");
 		model.put("message", message);
 
@@ -77,10 +86,6 @@ public class AdminController {
 		logger.debug("OUT - logout");
 
 		return "redirect:/admin/login";
-	}
-
-	private boolean validateUser(UserDTO user) {
-		return user.getLoginName().equals("admin") && user.getPassword().equals("pass");
 	}
 
 }

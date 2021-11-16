@@ -10,5 +10,5 @@ public interface PostService {
 
 	List<PostDTO> getLatestPosts(Integer numPosts);
 
-	PostDTO getPost(Long id);
+	PostDTO getPostById(Long id);
 }

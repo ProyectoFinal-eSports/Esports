@@ -38,7 +38,7 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public PostDTO getPost(Long id) {
+	public PostDTO getPostById(Long id) {
 
 		return new PostDTO(1L, LocalDate.now(),
 				"Riot Games announce they’ve reached 180 million active users across all Runeterra titles",

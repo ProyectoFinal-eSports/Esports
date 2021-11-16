@@ -1,24 +1,75 @@
 package com.esports.service.impl;
 
-import com.esports.model.entity.Team;
-import com.esports.repository.TeamRepository;
-import com.esports.service.TeamService;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import com.esports.converter.PlayerConverter;
+import com.esports.converter.TeamConverter;
+import com.esports.converter.TeamDTOConverter;
+import com.esports.dto.PlayerDTO;
+import com.esports.dto.TeamDTO;
+import com.esports.model.entity.Team;
+import com.esports.repository.TeamRepository;
+import com.esports.service.PlayerService;
+import com.esports.service.TeamService;
 
 @Service
 public class TeamServiceImpl implements TeamService {
 
-    @Autowired
-    private TeamRepository teamRepository;
+	public static final Logger logger = LoggerFactory.getLogger(TeamServiceImpl.class);
 
-    public Team getTeamById(Long id) {
-        Optional<Team> team = teamRepository.findById(id);
-        if (team.isPresent())
-            return team.get();
+	@Autowired
+	private TeamRepository teamRepository;
 
-        return null;
-    }
+	@Autowired
+	private PlayerService playerService;
+
+	@Autowired
+	private TeamConverter teamConverter;
+
+	@Autowired
+	private TeamDTOConverter teamDTOConverter;
+
+	@Autowired
+	private PlayerConverter playerConverter;
+
+	@Override
+	public List<TeamDTO> getTeamList() {
+		List<Team> teams = teamRepository.findAll();
+		List<TeamDTO> teamsDto = new ArrayList<>();
+		TeamDTO teamTmp;
+		for (final Team team : teams) {
+			teamTmp = teamConverter.convert(team);
+			teamTmp.setPlayers(playerService.getPlayersByTeam(team.getId()));
+			teamsDto.add(teamTmp);
+		}
+		return teamsDto;
+	}
+
+	@Override
+	public TeamDTO getTeamById(Long id) {
+		Team team = teamRepository.findById(id).orElseThrow();
+		TeamDTO teamDto = teamConverter.convert(team);
+		teamDto.setPlayers(playerConverter.convert(team.getPlayers()));
+		return teamDto;
+	}
+
+	@Override
+	public TeamDTO saveHuman(TeamDTO team) {
+		Team teamToSave = teamDTOConverter.convert(team);
+		Team teamSaved = teamRepository.save(teamToSave);
+
+		for (PlayerDTO playerDto : team.getPlayers()) {
+			playerDto.setTeam(teamConverter.convert(teamSaved));
+			playerService.savePlayer(playerDto);
+		}
+
+		return null;
+	}
+
 }

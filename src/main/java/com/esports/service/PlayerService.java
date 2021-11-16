@@ -2,9 +2,16 @@ package com.esports.service;
 
 import java.util.List;
 
-import com.esports.model.entity.Player;
+import com.esports.dto.PlayerDTO;
 
 public interface PlayerService {
 
-	List<Player> getPlayerList();
+	List<PlayerDTO> getPlayerList();
+
+	PlayerDTO getPlayerById(Long id);
+
+	PlayerDTO savePlayer(PlayerDTO player);
+
+	List<PlayerDTO> getPlayersByTeam(Long teamId);
+
 }

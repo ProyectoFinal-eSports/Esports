@@ -3,22 +3,25 @@ package com.esports.dto;
 public class UserDTO {
 
 	private Long id;
-	private String loginName;
+	private String loginname;
 	private String password;
-	private String name;
+	private boolean admin;
 
 	public UserDTO() {
 	}
 
-	public UserDTO(String loginName, String password) {
-		this(null, loginName, password, null);
+	public UserDTO(String loginname, String password) {
+		super();
+		this.loginname = loginname;
+		this.password = password;
 	}
 
-	public UserDTO(Long id, String loginName, String password, String name) {
+	public UserDTO(Long id, String loginname, String password, boolean admin) {
+		super();
 		this.id = id;
-		this.loginName = loginName;
+		this.loginname = loginname;
 		this.password = password;
-		this.name = name;
+		this.admin = admin;
 	}
 
 	public Long getId() {
@@ -29,12 +32,12 @@ public class UserDTO {
 		this.id = id;
 	}
 
-	public String getLoginName() {
-		return loginName;
+	public String getLoginname() {
+		return loginname;
 	}
 
-	public void setLoginName(String loginName) {
-		this.loginName = loginName;
+	public void setLoginname(String loginname) {
+		this.loginname = loginname;
 	}
 
 	public String getPassword() {
@@ -45,12 +48,12 @@ public class UserDTO {
 		this.password = password;
 	}
 
-	public String getName() {
-		return name;
+	public boolean isAdmin() {
+		return admin;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
 	}
 
 	@Override
@@ -58,12 +61,12 @@ public class UserDTO {
 		StringBuilder builder = new StringBuilder();
 		builder.append("UserDTO [id=");
 		builder.append(id);
-		builder.append(", loginName=");
-		builder.append(loginName);
+		builder.append(", loginname=");
+		builder.append(loginname);
 		builder.append(", password=");
 		builder.append(password);
-		builder.append(", name=");
-		builder.append(name);
+		builder.append(", admin=");
+		builder.append(admin);
 		builder.append("]");
 		return builder.toString();
 	}
