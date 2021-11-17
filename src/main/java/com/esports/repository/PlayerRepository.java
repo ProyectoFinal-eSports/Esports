@@ -6,8 +6,9 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.esports.model.entity.Player;
+import com.esports.model.entity.Team;
 
 public interface PlayerRepository extends JpaRepository<Player, Long> {
 
-	Optional<List<Player>> findByTeam(Long teamId);
+	Optional<List<Player>> findByTeam(Team team);
 }

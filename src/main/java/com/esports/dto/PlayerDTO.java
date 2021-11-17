@@ -72,4 +72,21 @@ public class PlayerDTO {
 		this.team = team;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("PlayerDTO [id=");
+		builder.append(id);
+		builder.append(", name=");
+		builder.append(name);
+		builder.append(", role=");
+		builder.append(role);
+		builder.append(", tags=");
+		builder.append(tags);
+		builder.append(", team=");
+		builder.append(team);
+		builder.append("]");
+		return builder.toString();
+	}
+
 }

@@ -41,12 +41,16 @@ public class TeamServiceImpl implements TeamService {
 	@Override
 	public List<TeamDTO> getTeamList() {
 		List<Team> teams = teamRepository.findAll();
+
 		List<TeamDTO> teamsDto = new ArrayList<>();
 		TeamDTO teamTmp;
 		for (final Team team : teams) {
 			teamTmp = teamConverter.convert(team);
-			teamTmp.setPlayers(playerService.getPlayersByTeam(team.getId()));
+			teamTmp.setPlayers(playerConverter.convert(team.getPlayers()));
+			// teamTmp.setPlayers(playerService.getPlayersByTeam(team.getId()));
 			teamsDto.add(teamTmp);
+			logger.debug("players: " + teamTmp.getPlayers());
+
 		}
 		return teamsDto;
 	}
@@ -60,7 +64,7 @@ public class TeamServiceImpl implements TeamService {
 	}
 
 	@Override
-	public TeamDTO saveHuman(TeamDTO team) {
+	public TeamDTO saveTeam(TeamDTO team) {
 		Team teamToSave = teamDTOConverter.convert(team);
 		Team teamSaved = teamRepository.save(teamToSave);
 
@@ -69,7 +73,9 @@ public class TeamServiceImpl implements TeamService {
 			playerService.savePlayer(playerDto);
 		}
 
-		return null;
+		final TeamDTO teamDtoResponse = teamConverter.convert(teamSaved);
+		teamDtoResponse.setPlayers(playerService.getPlayersByTeam(teamDtoResponse.getId()));
+		return teamDtoResponse;
 	}
 
 }

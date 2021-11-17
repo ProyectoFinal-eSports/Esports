@@ -1,6 +1,7 @@
 package com.esports.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +10,7 @@ import com.esports.converter.PlayerConverter;
 import com.esports.converter.PlayerDTOConverter;
 import com.esports.dto.PlayerDTO;
 import com.esports.model.entity.Player;
+import com.esports.model.entity.Team;
 import com.esports.repository.PlayerRepository;
 import com.esports.service.PlayerService;
 
@@ -46,7 +48,9 @@ public class PlayerServiceImpl implements PlayerService {
 
 	@Override
 	public List<PlayerDTO> getPlayersByTeam(Long teamId) {
-		return playerConverter.convert(playerRepository.findByTeam(teamId).orElseThrow());
+		Optional<List<Player>> players = playerRepository.findByTeam(new Team(teamId));
+
+		return playerConverter.convert(players.orElseThrow());
 	}
 
 }

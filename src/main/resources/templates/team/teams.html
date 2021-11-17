@@ -5,10 +5,11 @@
 	<div>
 		<table>
 			<tr th:each="team: ${teams}">
-				<td><a th:href="@{'/team/detalle?id=' + ${team.id}}"></a></td>
 				<td>
-					<p th:text="${team.name}"></p>
-				</td>
+					<a th:href="@{'/team/detalle?id=' + ${team.id}}">
+						<p th:text="${team.name}" />
+					</a>
+				</td>				
 			</tr>
 		</table>
 	</div>

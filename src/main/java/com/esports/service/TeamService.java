@@ -10,5 +10,5 @@ public interface TeamService {
 
 	TeamDTO getTeamById(Long id);
 
-	TeamDTO saveHuman(TeamDTO team);
+	TeamDTO saveTeam(TeamDTO team);
 }
