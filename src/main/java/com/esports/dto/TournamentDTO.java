@@ -1,5 +1,5 @@
 package com.esports.dto;
 
-public class ChampionshipDTO {
+public class TournamentDTO {
 
 }

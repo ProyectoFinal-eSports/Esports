@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "championships")
-public class Championship {
+public class Tournament {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +24,7 @@ public class Championship {
 	@ManyToOne
 	private Game game;
 
-	public Championship() {
+	public Tournament() {
 		super();
 	}
 }

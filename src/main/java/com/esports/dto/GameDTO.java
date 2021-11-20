@@ -11,6 +11,14 @@ public class GameDTO {
 	public GameDTO() {
 	}
 
+	public GameDTO(String name, String genre, String tags, String imgUrl) {
+		super();
+		this.name = name;
+		this.genre = genre;
+		this.tags = tags;
+		this.imgUrl = imgUrl;
+	}
+
 	public GameDTO(Long id, String name, String genre, String tags, String imgUrl) {
 		super();
 		this.id = id;
@@ -58,6 +66,23 @@ public class GameDTO {
 
 	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("GameDTO [id=");
+		builder.append(id);
+		builder.append(", name=");
+		builder.append(name);
+		builder.append(", genre=");
+		builder.append(genre);
+		builder.append(", tags=");
+		builder.append(tags);
+		builder.append(", imgUrl=");
+		builder.append(imgUrl);
+		builder.append("]");
+		return builder.toString();
 	}
 
 }

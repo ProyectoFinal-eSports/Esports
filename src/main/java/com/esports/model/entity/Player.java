@@ -12,7 +12,9 @@ public class Player {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(unique = true)
+	@Column(unique = true, name = "player_name")
+	private String playerName;
+
 	private String name;
 
 	private String role;
@@ -32,17 +34,19 @@ public class Player {
 		this.id = id;
 	}
 
-	public Player(String name, String role, String tags, Team team) {
+	public Player(String playerName, String name, String role, String tags, Team team) {
 		super();
+		this.playerName = playerName;
 		this.name = name;
 		this.role = role;
 		this.tags = tags;
 		this.team = team;
 	}
 
-	public Player(Long id, String name, String role, String tags, Team team) {
+	public Player(Long id, String playerName, String name, String role, String tags, Team team) {
 		super();
 		this.id = id;
+		this.playerName = playerName;
 		this.name = name;
 		this.role = role;
 		this.tags = tags;
@@ -55,6 +59,14 @@ public class Player {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getPlayerName() {
+		return playerName;
+	}
+
+	public void setPlayerName(String playerName) {
+		this.playerName = playerName;
 	}
 
 	public String getName() {

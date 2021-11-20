@@ -1,6 +1,6 @@
 package com.esports.service;
 
-public interface ChampionshipService {
+public interface TournamentService {
 
 	
 }

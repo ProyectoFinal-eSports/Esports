@@ -1,13 +1,13 @@
 <div class="container">
 	<div class="jumbotron">
-		<h1>Equipos</h1>
+		<h1>Clubes</h1>
 	</div>
 	<div>
 		<table>
-			<tr th:each="team: ${teams}">
+			<tr th:each="club: ${clubs}">
 				<td>
-					<a th:href="@{'/team/detalle?id=' + ${team.id}}">
-						<p th:text="${team.name}" />
+					<a th:href="@{'/club/detalle?id=' + ${club.id}}">
+						<p th:text="${club.name}" />
 					</a>
 				</td>				
 			</tr>

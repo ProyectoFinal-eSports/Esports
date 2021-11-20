@@ -18,9 +18,9 @@ public class PlayerConverter implements GenericConverter<Player, PlayerDTO> {
 	@Override
 	public PlayerDTO apply(Player input) {
 		return input.getId() == null
-				? new PlayerDTO(input.getName(), input.getRole(), input.getTags(),
+				? new PlayerDTO(input.getPlayerName(), input.getName(), input.getRole(), input.getTags(),
 						teamConverter.convert(input.getTeam()))
-				: new PlayerDTO(input.getId(), input.getName(), input.getRole(), input.getTags(),
+				: new PlayerDTO(input.getId(), input.getPlayerName(), input.getName(), input.getRole(), input.getTags(),
 						teamConverter.convert(input.getTeam()));
 	}
 

@@ -34,6 +34,7 @@ public class TeamController {
 		logger.debug("preparing data for view");
 		model.put("teams", teams);
 		model.put("view", "/team/teams");
+		logger.debug("OUT - teams - /");
 
 		return "/_t/frame";
 	}

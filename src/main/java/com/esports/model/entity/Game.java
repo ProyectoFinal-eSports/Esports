@@ -11,8 +11,6 @@ import javax.persistence.Table;
 @Table(name = "games")
 public class Game {
 
-	// =======================================
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -23,37 +21,32 @@ public class Game {
 	private String genre;
 
 	private String tags;
-	
+
+	@Column(name = "img_url")
 	private String imgUrl;
-
-	/*
-	 * @ManyToOne(cascade = CascadeType.ALL) private List<Championship>
-	 * championships;
-	 */
-
-	// =======================================
 
 	public Game() {
 	}
 
 	public Game(Long id) {
-		super();
 		this.id = id;
 	}
 
-	public Game(Long id, String name, String genre, String tags) {
+	public Game(Long id, String name, String genre, String tags, String imgUrl) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.genre = genre;
 		this.tags = tags;
+		this.imgUrl = imgUrl;
 	}
 
-	public Game(String name, String genre, String tags) {
+	public Game(String name, String genre, String tags, String imgUrl) {
 		super();
 		this.name = name;
 		this.genre = genre;
 		this.tags = tags;
+		this.imgUrl = imgUrl;
 	}
 
 	public Long getId() {
@@ -86,6 +79,14 @@ public class Game {
 
 	public void setTags(String tags) {
 		this.tags = tags;
+	}
+
+	public String getImgUrl() {
+		return imgUrl;
+	}
+
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
 	}
 
 }

@@ -1,0 +1,23 @@
+<div class="container">
+	<div class="jumbotron">
+		<h1>Jugadores</h1>
+	</div>
+	<div class="container mt-3">
+		<table class="table table-hover">
+			<thead class="thead-dark">
+				<tr>
+					<th>Nick de jugador</th>
+					<th>Nombre</th>
+					<th>Rol</th>
+				</tr>
+			</thead>
+			<tbody th:each="player: ${team.players}">
+				<tr>
+					<td th:text="${player.playerName}" />
+					<td th:text="${player.name}" />
+					<td th:text="${player.role}" />
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

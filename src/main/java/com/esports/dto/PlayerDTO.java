@@ -4,6 +4,8 @@ public class PlayerDTO {
 
 	private Long id;
 
+	private String playerName;
+
 	private String name;
 
 	private String role;
@@ -15,17 +17,19 @@ public class PlayerDTO {
 	public PlayerDTO() {
 	}
 
-	public PlayerDTO(String name, String role, String tags, TeamDTO team) {
+	public PlayerDTO(String playerName, String name, String role, String tags, TeamDTO team) {
 		super();
+		this.playerName = playerName;
 		this.name = name;
 		this.role = role;
 		this.tags = tags;
 		this.team = team;
 	}
 
-	public PlayerDTO(Long id, String name, String role, String tags, TeamDTO team) {
+	public PlayerDTO(Long id, String playerName, String name, String role, String tags, TeamDTO team) {
 		super();
 		this.id = id;
+		this.playerName = playerName;
 		this.name = name;
 		this.role = role;
 		this.tags = tags;
@@ -38,6 +42,14 @@ public class PlayerDTO {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getPlayerName() {
+		return playerName;
+	}
+
+	public void setPlayerName(String playerName) {
+		this.playerName = playerName;
 	}
 
 	public String getName() {
@@ -77,6 +89,8 @@ public class PlayerDTO {
 		StringBuilder builder = new StringBuilder();
 		builder.append("PlayerDTO [id=");
 		builder.append(id);
+		builder.append(", playerName=");
+		builder.append(playerName);
 		builder.append(", name=");
 		builder.append(name);
 		builder.append(", role=");

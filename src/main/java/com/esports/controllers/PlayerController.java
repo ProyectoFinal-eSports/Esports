@@ -28,6 +28,7 @@ public class PlayerController {
 		logger.debug("IN - players - /");
 		logger.debug("getting player list");
 		List<PlayerDTO> players = playerService.getPlayerList();
+
 		logger.debug("preparing data for view");
 		model.put("players", players);
 		model.put("view", "/player/players");

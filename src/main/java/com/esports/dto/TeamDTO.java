@@ -59,4 +59,19 @@ public class TeamDTO {
 		this.players = players;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("TeamDTO [id=");
+		builder.append(id);
+		builder.append(", name=");
+		builder.append(name);
+		builder.append(", tags=");
+		builder.append(tags);
+		builder.append(", players=");
+		builder.append(players);
+		builder.append("]");
+		return builder.toString();
+	}
+
 }

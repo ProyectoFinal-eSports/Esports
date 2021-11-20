@@ -41,9 +41,9 @@ public class TeamServiceImpl implements TeamService {
 	@Override
 	public List<TeamDTO> getTeamList() {
 		List<Team> teams = teamRepository.findAll();
-
 		List<TeamDTO> teamsDto = new ArrayList<>();
 		TeamDTO teamTmp;
+
 		for (final Team team : teams) {
 			teamTmp = teamConverter.convert(team);
 			teamTmp.setPlayers(playerConverter.convert(team.getPlayers()));

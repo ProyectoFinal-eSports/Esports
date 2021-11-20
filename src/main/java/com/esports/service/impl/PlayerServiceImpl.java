@@ -24,7 +24,7 @@ public class PlayerServiceImpl implements PlayerService {
 	private PlayerConverter playerConverter;
 
 	@Autowired
-	private PlayerDTOConverter playerDtoConverter;
+	private PlayerDTOConverter playerDTOConverter;
 
 	@Override
 	public List<PlayerDTO> getPlayerList() {
@@ -41,7 +41,7 @@ public class PlayerServiceImpl implements PlayerService {
 
 	@Override
 	public PlayerDTO savePlayer(PlayerDTO player) {
-		Player playerSaved = playerRepository.save(playerDtoConverter.convert(player));
+		Player playerSaved = playerRepository.save(playerDTOConverter.convert(player));
 		PlayerDTO newPlayerSaved = playerConverter.convert(playerSaved);
 		return newPlayerSaved;
 	}
