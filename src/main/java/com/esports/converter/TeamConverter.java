@@ -10,6 +10,7 @@ public class TeamConverter implements GenericConverter<Team, TeamDTO> {
 
 	@Override
 	public TeamDTO apply(Team input) {
+		
 		return input.getId() == null 
 				? new TeamDTO(input.getName(), input.getTags(), null)
 				: new TeamDTO(input.getId(), input.getName(), input.getTags(), null);

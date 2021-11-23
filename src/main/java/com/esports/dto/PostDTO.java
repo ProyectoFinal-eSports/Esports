@@ -5,10 +5,9 @@ import java.time.LocalDate;
 public class PostDTO {
 
 	private Long id;
-	private LocalDate date;
 	private String title;
+	private LocalDate date;
 	private String shortText;
-	private String longText;
 	private String tags;
 	private String author;
 	private String imgUrl;
@@ -16,14 +15,22 @@ public class PostDTO {
 	public PostDTO() {
 	}
 
-	public PostDTO(Long id, LocalDate date, String title, String shortText, String longText, String tags, String author,
-			String imgUrl) {
+	public PostDTO(String title, LocalDate date, String shortText, String tags, String author, String imgUrl) {
+		super();
+		this.title = title;
+		this.date = date;
+		this.shortText = shortText;
+		this.tags = tags;
+		this.author = author;
+		this.imgUrl = imgUrl;
+	}
+
+	public PostDTO(Long id, String title, LocalDate date, String shortText, String tags, String author, String imgUrl) {
 		super();
 		this.id = id;
-		this.date = date;
 		this.title = title;
+		this.date = date;
 		this.shortText = shortText;
-		this.longText = longText;
 		this.tags = tags;
 		this.author = author;
 		this.imgUrl = imgUrl;
@@ -53,20 +60,12 @@ public class PostDTO {
 		this.title = title;
 	}
 
-	public String getShorttext() {
+	public String getShortText() {
 		return shortText;
 	}
 
-	public void setShorttext(String shorttext) {
-		this.shortText = shorttext;
-	}
-
-	public String getLongText() {
-		return longText;
-	}
-
-	public void setLongText(String longText) {
-		this.longText = longText;
+	public void setShortText(String shortText) {
+		this.shortText = shortText;
 	}
 
 	public String getTags() {
@@ -75,14 +74,6 @@ public class PostDTO {
 
 	public void setTags(String tags) {
 		this.tags = tags;
-	}
-
-	public String getShortText() {
-		return shortText;
-	}
-
-	public void setShortText(String shortText) {
-		this.shortText = shortText;
 	}
 
 	public String getAuthor() {
@@ -99,6 +90,27 @@ public class PostDTO {
 
 	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("PostDTO [id=");
+		builder.append(id);
+		builder.append(", date=");
+		builder.append(date);
+		builder.append(", title=");
+		builder.append(title);
+		builder.append(", shortText=");
+		builder.append(shortText);
+		builder.append(", tags=");
+		builder.append(tags);
+		builder.append(", author=");
+		builder.append(author);
+		builder.append(", imgUrl=");
+		builder.append(imgUrl);
+		builder.append("]");
+		return builder.toString();
 	}
 
 }

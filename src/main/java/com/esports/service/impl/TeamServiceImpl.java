@@ -47,7 +47,6 @@ public class TeamServiceImpl implements TeamService {
 		for (final Team team : teams) {
 			teamTmp = teamConverter.convert(team);
 			teamTmp.setPlayers(playerConverter.convert(team.getPlayers()));
-			// teamTmp.setPlayers(playerService.getPlayersByTeam(team.getId()));
 			teamsDto.add(teamTmp);
 			logger.debug("players: " + teamTmp.getPlayers());
 
@@ -75,6 +74,7 @@ public class TeamServiceImpl implements TeamService {
 
 		final TeamDTO teamDtoResponse = teamConverter.convert(teamSaved);
 		teamDtoResponse.setPlayers(playerService.getPlayersByTeam(teamDtoResponse.getId()));
+
 		return teamDtoResponse;
 	}
 

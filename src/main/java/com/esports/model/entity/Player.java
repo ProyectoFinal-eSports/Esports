@@ -1,6 +1,14 @@
 package com.esports.model.entity;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "players")
@@ -25,6 +33,8 @@ public class Player {
 	@JoinColumn(name = "team_id")
 	private Team team;
 
+	// =======================================
+
 	public Player() {
 		super();
 	}
@@ -32,15 +42,6 @@ public class Player {
 	public Player(Long id) {
 		super();
 		this.id = id;
-	}
-
-	public Player(String playerName, String name, String role, String tags, Team team) {
-		super();
-		this.playerName = playerName;
-		this.name = name;
-		this.role = role;
-		this.tags = tags;
-		this.team = team;
 	}
 
 	public Player(Long id, String playerName, String name, String role, String tags, Team team) {
@@ -52,6 +53,17 @@ public class Player {
 		this.tags = tags;
 		this.team = team;
 	}
+
+	public Player(String playerName, String name, String role, String tags, Team team) {
+		super();
+		this.playerName = playerName;
+		this.name = name;
+		this.role = role;
+		this.tags = tags;
+		this.team = team;
+	}
+
+	// =======================================
 
 	public Long getId() {
 		return id;

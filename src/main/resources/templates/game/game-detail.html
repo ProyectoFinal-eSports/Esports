@@ -1,9 +1,58 @@
 <div class="container">
-  <div>
-    <p>
-      <img th:src="@{${game.imgUrl}}" />
-    </p>
-    <p th:text="${game.name}"></p>
-    <p th:text="${game.tags}" />
-  </div>
+	<div>
+		<h1 th:text="${game.name}"></h1>
+		<p>
+			<img th:src="@{${game.imgUrl}}" />
+		</p>
+		<blockquote class="blockquote">
+			<p th:text="${game.gameplay}"></p>
+			<p>
+				Género: <span th:text="${game.genre}"></span>
+			</p>
+			<footer class="blockquote-footer">De Riot Games</footer>
+		</blockquote>
+		<p>Los jugadores compiten en partidas, que duran entre 15 y 50
+			minutos en promedio. En cada modo de juego, los equipos trabajan
+			juntos para lograr una condición de victoria, normalmente destruyendo
+			la estructura central (llamado Nexo) en la base del equipo enemigo
+			después de pasar por alto una línea de estructuras defensivas
+			llamadas Torretas. En todos los modos de juego, los jugadores
+			controlan personajes llamados «campeones», elegidos o asignados en
+			cada partida, que tienen un conjunto de habilidades únicas, con los
+			cuales jugarán toda la partida hasta su conclusión.</p>
+		<br>
+		<p>Los campeones comienzan cada partida con un bajo nivel, y luego
+			ganan experiencia en el transcurso de la partida para alcanzar un
+			nivel máximo de 18. Ganar niveles de experiencia en las partidas
+			permite a los jugadores desbloquear las habilidades especiales de su
+			campeón y aumentarlas de varias maneras únicas para cada personaje.
+			Si un campeón pierde toda su salud, es derrotado, pero es revivido
+			automáticamente en su base una vez que pase el tiempo suficiente. Los
+			campeones también comienzan cada partida con una cantidad baja de
+			oro, y pueden ganar oro adicional durante todo la partida de varias
+			maneras: matando a personajes no jugadores conocidos como súbditos y
+			monstruos; matando o ayudando a matar campeones enemigos; destruyendo
+			las estructuras enemigas; pasivamente a través del tiempo; y a través
+			de interacciones con artículos únicos o habilidades de campeón. Este
+			oro se puede gastar a lo largo de la partida para comprar artículos
+			del juego que aumentan aún más las estadísticas de cada campeón
+			(ataque, defensa, vida, etc.) y la jugabilidad en una variedad de
+			formas.</p>
+	</div>
+	<div class="container mt-3">
+		<table class="table table-hover">
+			<thead class="thead-dark">
+				<tr>
+					<th>Torneo</th>
+					<th>Región</th>
+				</tr>
+			</thead>
+			<tbody th:each="tournament: ${game.tournaments}">
+				<tr>
+					<td th:text="${tournament.name}" />
+					<td th:text="${tournament.region}" />
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </div>

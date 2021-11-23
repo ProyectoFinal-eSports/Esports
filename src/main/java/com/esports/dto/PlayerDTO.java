@@ -3,15 +3,10 @@ package com.esports.dto;
 public class PlayerDTO {
 
 	private Long id;
-
 	private String playerName;
-
 	private String name;
-
 	private String role;
-
 	private String tags;
-
 	private TeamDTO team;
 
 	public PlayerDTO() {

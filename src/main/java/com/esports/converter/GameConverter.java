@@ -12,7 +12,8 @@ public class GameConverter implements GenericConverter<Game, GameDTO> {
 	public GameDTO apply(Game input) {
 
 		return input.getId() == null
-				? new GameDTO(input.getName(), input.getGenre(), input.getTags(), input.getImgUrl())
-				: new GameDTO(input.getId(), input.getName(), input.getGenre(), input.getTags(), input.getImgUrl());
+				? new GameDTO(input.getName(), input.getGenre(), input.getGameplay(), input.getImgUrl(), null)
+				: new GameDTO(input.getId(), input.getName(), input.getGenre(), input.getGameplay(), input.getImgUrl(),
+						null);
 	}
 }

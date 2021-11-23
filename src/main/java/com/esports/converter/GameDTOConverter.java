@@ -10,10 +10,11 @@ public class GameDTOConverter implements GenericConverter<GameDTO, Game> {
 
 	@Override
 	public Game apply(GameDTO input) {
-		
-		return input.getId() == null 
-				? new Game(input.getName(), input.getGenre(), input.getTags(), input.getImgUrl())
-				: new Game(input.getId(), input.getName(), input.getGenre(), input.getTags(), input.getImgUrl());
+
+		return input.getId() == null
+				? new Game(input.getName(), input.getGenre(), input.getGameplay(), input.getImgUrl(), null)
+				: new Game(input.getId(), input.getName(), input.getGenre(), input.getGameplay(), input.getImgUrl(),
+						null);
 	}
 
 }

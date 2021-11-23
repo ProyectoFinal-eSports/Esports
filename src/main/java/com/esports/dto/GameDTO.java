@@ -1,31 +1,37 @@
 package com.esports.dto;
 
+import java.util.List;
+
 public class GameDTO {
 
 	private Long id;
 	private String name;
 	private String genre;
-	private String tags;
+	private String gameplay;
 	private String imgUrl;
+	private List<TournamentDTO> tournaments;
 
 	public GameDTO() {
 	}
 
-	public GameDTO(String name, String genre, String tags, String imgUrl) {
-		super();
-		this.name = name;
-		this.genre = genre;
-		this.tags = tags;
-		this.imgUrl = imgUrl;
-	}
-
-	public GameDTO(Long id, String name, String genre, String tags, String imgUrl) {
+	public GameDTO(Long id, String name, String genre, String gameplay, String imgUrl,
+			List<TournamentDTO> tournaments) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.genre = genre;
-		this.tags = tags;
+		this.gameplay = gameplay;
 		this.imgUrl = imgUrl;
+		this.tournaments = tournaments;
+	}
+
+	public GameDTO(String name, String genre, String gameplay, String imgUrl, List<TournamentDTO> tournaments) {
+		super();
+		this.name = name;
+		this.genre = genre;
+		this.gameplay = gameplay;
+		this.imgUrl = imgUrl;
+		this.tournaments = tournaments;
 	}
 
 	public Long getId() {
@@ -52,12 +58,12 @@ public class GameDTO {
 		this.genre = genre;
 	}
 
-	public String getTags() {
-		return tags;
+	public String getGameplay() {
+		return gameplay;
 	}
 
-	public void setTags(String tags) {
-		this.tags = tags;
+	public void setGameplay(String gameplay) {
+		this.gameplay = gameplay;
 	}
 
 	public String getImgUrl() {
@@ -66,6 +72,14 @@ public class GameDTO {
 
 	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
+	}
+
+	public List<TournamentDTO> getTournaments() {
+		return tournaments;
+	}
+
+	public void setTournaments(List<TournamentDTO> tournaments) {
+		this.tournaments = tournaments;
 	}
 
 	@Override
@@ -77,10 +91,12 @@ public class GameDTO {
 		builder.append(name);
 		builder.append(", genre=");
 		builder.append(genre);
-		builder.append(", tags=");
-		builder.append(tags);
+		builder.append(", gameplay=");
+		builder.append(gameplay);
 		builder.append(", imgUrl=");
 		builder.append(imgUrl);
+		builder.append(", tournaments=");
+		builder.append(tournaments);
 		builder.append("]");
 		return builder.toString();
 	}
