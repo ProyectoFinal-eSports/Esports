@@ -1,12 +1,17 @@
 package com.esports.model.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -31,6 +36,11 @@ public class Tournament {
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "game_id")
 	private Game game;
+
+	@ManyToMany(mappedBy = "tournaments", fetch = FetchType.LAZY)
+	private Set<Team> teams = new HashSet<>();
+
+	// =======================================
 
 	public Tournament() {
 		super();
@@ -96,6 +106,14 @@ public class Tournament {
 
 	public void setGame(Game game) {
 		this.game = game;
+	}
+
+	public Set<Team> getTeams() {
+		return teams;
+	}
+
+	public void setTeams(Set<Team> teams) {
+		this.teams = teams;
 	}
 
 }

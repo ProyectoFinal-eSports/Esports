@@ -2,11 +2,7 @@
 	<div class="jumbotron">
 		<h1 th:text="${team.name}"></h1>
 	</div>
-	<p>Fnatic es uno de los equipos más famosos de la historia de los
-		esports, sobre todo en los que a League of Legends y Counter Strike se
-		refiere, aunque compiten en muchas más disciplinas. Fue fundado en
-		marzo de 2011 con la adquisición de MyRevenge, y han sido, entre
-		muchos otros títulos, campeones del mundo y de la LCS EU.</p>
+	<p th:text="${team.history}"></p>
 	<div class="container mt-3">
 		<table class="table table-hover">
 			<thead class="thead-dark">

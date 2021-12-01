@@ -1,0 +1,30 @@
+<div class="container">
+	<h1>Nuevo Jugador</h1>
+
+	<form method="post" th:object="${playerForm}">
+		<div class="form-group">
+			<label>Nick de Jugador</label> <input type="text"
+				class="form-control" th:field="*{player.playerName}" />
+		</div>
+		<div class="form-group">
+			<label>Nombre</label> <input type="text" class="form-control"
+				th:field="*{player.name}" />
+		</div>
+		<div class="form-group">
+			<label>Rol</label> <input type="text" class="form-control"
+				th:field="*{player.role}" />
+		</div>
+		<div class="form-group">
+			<label>Etiquetas</label> <input type="text" class="form-control"
+				th:field="*{player.tags}" />
+		</div>
+		<div class="form-group">
+			<label>Selecciona un equipo:</label> <select class="form-control"
+				th:field="*{teamSelected}">
+				<option th:each="team: ${playerForm.teams}" th:value="${team.id}"
+					th:text="${team.name}">
+			</select>
+		</div>
+		<button type="submit" class="btn btn-primary">Crear</button>
+	</form>
+</div>

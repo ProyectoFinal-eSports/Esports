@@ -1,0 +1,24 @@
+<div class="container">
+  <h1>Nuevo Juego</h1>
+  <form method="post">
+    <input
+      type="hidden"
+      class="form-control"
+      name="playerId"
+      th:value="${playerId}"
+    />
+    <div class="form-group">
+      <label>Nombre</label>
+      <input type="text" class="form-control" name="name" id="" />
+    </div>
+    <div class="form-group">
+      <label>Género</label>
+      <input type="text" class="form-control" name="genre" id="" />
+    </div>
+    <div class="form-group">
+      <label>Jugabilidad</label>
+      <input type="text" class="form-control" name="gameplay" id="" />
+    </div>
+    <button type="submit" class="btn btn-primary">Crear</button>
+  </form>
+</div>

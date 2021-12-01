@@ -1,11 +1,19 @@
 package com.esports.model.entity;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -19,10 +27,19 @@ public class Team {
 
 	private String name;
 
+	@Column(columnDefinition = "TEXT")
+	private String history;
+
 	private String tags;
 
 	@OneToMany(mappedBy = "team")
 	private List<Player> players;
+
+	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.MERGE, CascadeType.REFRESH })
+	@JoinTable(name = "teams_tournaments", joinColumns = {
+			@JoinColumn(name = "team_id", referencedColumnName = "id", nullable = false, updatable = false) }, inverseJoinColumns = {
+					@JoinColumn(name = "tournament_id", referencedColumnName = "id", nullable = false, updatable = false) })
+	private Set<Tournament> tournaments = new HashSet<>();
 
 	public Team() {
 	}
@@ -31,17 +48,19 @@ public class Team {
 		this.id = id;
 	}
 
-	public Team(Long id, String name, String tags, List<Player> players) {
+	public Team(Long id, String name, String history, String tags, List<Player> players) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.history = history;
 		this.tags = tags;
 		this.players = players;
 	}
 
-	public Team(String name, String tags, List<Player> players) {
+	public Team(String name, String history, String tags, List<Player> players) {
 		super();
 		this.name = name;
+		this.history = history;
 		this.tags = tags;
 		this.players = players;
 	}
@@ -62,6 +81,14 @@ public class Team {
 		this.name = name;
 	}
 
+	public String getHistory() {
+		return history;
+	}
+
+	public void setHistory(String history) {
+		this.history = history;
+	}
+
 	public String getTags() {
 		return tags;
 	}
@@ -77,4 +104,13 @@ public class Team {
 	public void setPlayers(List<Player> players) {
 		this.players = players;
 	}
+
+	public Set<Tournament> getTournaments() {
+		return tournaments;
+	}
+
+	public void setTournaments(Set<Tournament> tournaments) {
+		this.tournaments = tournaments;
+	}
+
 }

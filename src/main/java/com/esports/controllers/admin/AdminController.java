@@ -1,4 +1,4 @@
-package com.esports.controllers;
+package com.esports.controllers.admin;
 
 import javax.servlet.http.HttpSession;
 
@@ -11,9 +11,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.esports.dto.TeamDTO;
 import com.esports.dto.UserDTO;
 import com.esports.model.entity.User;
+import com.esports.service.TeamService;
 import com.esports.service.UserService;
 
 @Controller
@@ -24,6 +27,9 @@ public class AdminController {
 
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private TeamService teamService;
 
 	private String message = "";
 
@@ -86,6 +92,27 @@ public class AdminController {
 		logger.debug("OUT - logout");
 
 		return "redirect:/admin/login";
+	}
+
+	@GetMapping("team/createTeam")
+	public String teamCreate(ModelMap model) {
+		model.put("view", "admin/team/readTeam");
+		return "/_t/frame";
+	}
+
+	@PostMapping("team/createTeam")
+	public String teamCreatePost(@RequestParam("name") String name, @RequestParam("history") String history,
+			@RequestParam("tags") String tags) {
+		teamService.saveTeam(new TeamDTO(name, tags, history, null));
+		return "redirect:/admin/team/readTeam";
+
+	}
+
+	@GetMapping("team/readTeam")
+	public String teamRead(ModelMap model) {
+		model.put("teams", teamService.getTeamList());
+		model.put("view", "admin/team/readTeam");
+		return "/_t/frame";
 	}
 
 }

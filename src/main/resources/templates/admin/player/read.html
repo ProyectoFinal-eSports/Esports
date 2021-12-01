@@ -1,0 +1,24 @@
+<div class="container">
+	<br> <a href="/admin/player/create" class="mb-3 btn btn-info"
+		role="button">Crear</a> <br>
+
+	<h1>Lista de jugadores</h1>
+
+	<table class="table table-hover">
+		<thead class="thead-light">
+			<th>Nick de jugador</th>
+			<th>Nombre</th>
+			<th>Rol</th>
+			<th>Equipo</th>
+		</thead>
+		<tbody th:each="player: ${players}">
+			<tr>
+				<td th:text="${player.playerName}" />
+				<td th:text="${player.name}" />
+				<td th:text="${player.role}" />
+				<td th:text="${player.team.name}"></td>
+			</tr>
+		</tbody>
+	</table>
+
+</div>

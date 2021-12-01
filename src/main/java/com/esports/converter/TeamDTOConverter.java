@@ -12,8 +12,8 @@ public class TeamDTOConverter implements GenericConverter<TeamDTO, Team> {
 	public Team apply(TeamDTO input) {
 		
 		return input.getId() == null
-				? new Team(input.getName(), input.getTags(), null)
-				: new Team(input.getId(), input.getName(), input.getTags(), null);
+				? new Team(input.getName(),input.getHistory(), input.getTags(), null)
+				: new Team(input.getId(), input.getName(),input.getHistory(), input.getTags(), null);
 	}
 
 }
