@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.esports.dto.UserDTO;
-import com.esports.model.entity.User;
 import com.esports.service.UserService;
 
 @Controller
@@ -46,7 +45,13 @@ public class UserController {
 		model.put("userDTO", userDTO);
 		model.put("view", "/user/registro");
 		model.put("message", "Usuario registrado");
-		//Redirecionar a la pantalla de registro
+		// Redirecionar a la pantalla de registro
+		return "/_t/frame";
+	}
+
+	@GetMapping("/login")
+	public String loginForm(ModelMap model, HttpSession session) {
+		model.put("view", "/user/login");
 		return "/_t/frame";
 	}
 
