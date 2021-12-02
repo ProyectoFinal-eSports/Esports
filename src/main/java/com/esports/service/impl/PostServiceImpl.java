@@ -1,6 +1,5 @@
 package com.esports.service.impl;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,6 +56,13 @@ public class PostServiceImpl implements PostService {
 		PostDTO postDto = postConverter.convert(post);
 
 		return postDto;
+	}
+
+	@Override
+	public PostDTO savePost(PostDTO post) {
+		Post postSaved = postRepository.save(postDTOConverter.convert(post));
+		PostDTO newPostSaved = postConverter.convert(postSaved);
+		return newPostSaved;
 	}
 
 }

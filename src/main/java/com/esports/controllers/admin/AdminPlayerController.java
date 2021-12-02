@@ -44,13 +44,12 @@ public class AdminPlayerController {
 	@PostMapping("player/create")
 	public String playerCreatePost(@ModelAttribute PlayerFormDTO playerForm, ModelMap model, HttpSession session) {
 		logger.debug("PlayerFormDTO: " + playerForm);
-		
+
 		TeamDTO teamDTO = new TeamDTO();
 		teamDTO.setId(Long.parseLong(playerForm.getTeamSelected()));
 		PlayerDTO playerDTO = playerForm.getPlayer();
-		playerDTO.setTeam(teamDTO);		
+		playerDTO.setTeam(teamDTO);
 		playerService.savePlayer(playerDTO);
-		
 		return "redirect:/admin/player/create";
 	}
 

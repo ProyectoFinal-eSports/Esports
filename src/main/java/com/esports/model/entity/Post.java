@@ -27,6 +27,9 @@ public class Post {
 	@Column(name = "short_text")
 	private String shortText;
 
+	@Column(name = "long_text", columnDefinition = "TEXT")
+	private String longText;
+
 	private String tags;
 
 	private String author;
@@ -42,22 +45,26 @@ public class Post {
 		this.id = id;
 	}
 
-	public Post(Long id, String title, LocalDate date, String shortText, String tags, String author, String imgUrl) {
+	public Post(Long id, String title, LocalDate date, String shortText, String longText, String tags, String author,
+			String imgUrl) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.date = date;
 		this.shortText = shortText;
+		this.longText = longText;
 		this.tags = tags;
 		this.author = author;
 		this.imgUrl = imgUrl;
 	}
 
-	public Post(String title, LocalDate date, String shortText, String tags, String author, String imgUrl) {
+	public Post(String title, LocalDate date, String shortText, String longText, String tags, String author,
+			String imgUrl) {
 		super();
 		this.title = title;
 		this.date = date;
 		this.shortText = shortText;
+		this.longText = longText;
 		this.tags = tags;
 		this.author = author;
 		this.imgUrl = imgUrl;
@@ -93,6 +100,14 @@ public class Post {
 
 	public void setShortText(String shortText) {
 		this.shortText = shortText;
+	}
+
+	public String getLongText() {
+		return longText;
+	}
+
+	public void setLongText(String longText) {
+		this.longText = longText;
 	}
 
 	public String getTags() {

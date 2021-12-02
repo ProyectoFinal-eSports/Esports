@@ -1,9 +1,27 @@
 <div class="container">
-  <form action="/admin/noticia/c">
-    <br />
-    <input type="submit" class="mt-2 btn btn-info" value="Crear Noticia" />
-    <br /><br />
-    <h1>Lista de noticias</h1>
-    
-  </form>
+	<br> <a href="/admin/post/create" class="mb-3 btn btn-info"
+		role="button">Crear</a> <br>
+
+	<h1>Lista de noticias</h1>
+
+	<table class="table table-hover">
+		<thead class="thead-light">
+			<tr>
+				<th>Título</th>
+				<th>Fecha</th>
+				<th>Etiquetas</th>
+				<th>Ver</th>
+			</tr>
+		</thead>
+		<tbody th:each="post: ${post}">
+			<tr>
+
+				<td th:text="${post.title}"></td>
+				<td th:text="${#temporals.format(post.date, 'dd-MM-yyyy')}"></td>
+				<td th:text="${post.tags}"></td>
+				<td><a th:href="@{'/post/detalle?id=' + ${post.id}}"
+					class="mb-3 btn btn-info" role="button">Ver noticia</a></td>
+			</tr>
+		</tbody>
+	</table>
 </div>

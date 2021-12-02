@@ -12,10 +12,10 @@ public class PostDTOConverter implements GenericConverter<PostDTO, Post> {
 	public Post apply(PostDTO input) {
 
 		return input.getId() == null
-				? new Post(input.getTitle(), input.getDate(), input.getShortText(), input.getTags(), input.getAuthor(),
-						input.getImgUrl())
-				: new Post(input.getId(), input.getTitle(), input.getDate(), input.getShortText(), input.getTags(),
-						input.getAuthor(), input.getImgUrl());
+				? new Post(input.getTitle(), input.getDate(), input.getShortText(), input.getLongText(),
+						input.getTags(), input.getAuthor(), input.getImgUrl())
+				: new Post(input.getId(), input.getTitle(), input.getDate(), input.getShortText(), input.getLongText(),
+						input.getTags(), input.getAuthor(), input.getImgUrl());
 	}
 
 }

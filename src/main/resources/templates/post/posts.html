@@ -5,8 +5,7 @@
 	<div>
 		<table>
 			<tr th:each="post: ${posts}">
-			   <td>
-			   	<img style="width:200px;height:200px" th:src="@{${post.imgUrl}}" />
+			   <td><img style="width:200px;height:200px" th:src="@{${post.imgUrl}}" />
 			   </td>
 				<td>
 					<a th:href="@{'/post/detalle?id=' + ${post.id}}">

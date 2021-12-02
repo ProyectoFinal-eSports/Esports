@@ -5,6 +5,7 @@
 		</p>
 		<p th:text="${post.title}" />
 		<p th:text="${post.shortText}" />
+		<p th:text="${post.longText}" />
 		<p>
 			<span th:text="${#temporals.format(post.date, 'dd-MM-yyyy')}" /> | <span
 				th:text="${post.author}" />

@@ -46,7 +46,7 @@ public class UserController {
 		model.put("userDTO", userDTO);
 		model.put("view", "/user/registro");
 		model.put("message", "Usuario registrado");
-
+		//Redirecionar a la pantalla de registro
 		return "/_t/frame";
 	}
 
