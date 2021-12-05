@@ -19,6 +19,8 @@ public class User {
 	private String loginname;
 
 	private String password;
+	
+	//Nombre, apellidos, direccion (datos esenciales)
 
 	private boolean admin;
 

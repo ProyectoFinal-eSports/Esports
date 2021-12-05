@@ -10,6 +10,7 @@ import com.esports.converter.PlayerConverter;
 import com.esports.converter.PlayerDTOConverter;
 import com.esports.dto.PlayerDTO;
 import com.esports.model.entity.Player;
+import com.esports.model.entity.Role;
 import com.esports.model.entity.Team;
 import com.esports.repository.PlayerRepository;
 import com.esports.service.PlayerService;
@@ -51,6 +52,12 @@ public class PlayerServiceImpl implements PlayerService {
 		Optional<List<Player>> players = playerRepository.findByTeam(new Team(teamId));
 
 		return playerConverter.convert(players.orElseThrow());
+	}
+
+	@Override
+	public List<PlayerDTO> getPlayersByRole(Long roleId) {
+		Optional<List<Player>> players = playerRepository.findByRole(new Role(roleId));
+		return null;
 	}
 
 }

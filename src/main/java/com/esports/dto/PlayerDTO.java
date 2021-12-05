@@ -5,14 +5,14 @@ public class PlayerDTO {
 	private Long id;
 	private String playerName;
 	private String name;
-	private String role;
+	private RoleDTO role;
 	private String tags;
 	private TeamDTO team;
 
 	public PlayerDTO() {
 	}
 
-	public PlayerDTO(String playerName, String name, String role, String tags, TeamDTO team) {
+	public PlayerDTO(String playerName, String name, RoleDTO role, String tags, TeamDTO team) {
 		super();
 		this.playerName = playerName;
 		this.name = name;
@@ -21,7 +21,7 @@ public class PlayerDTO {
 		this.team = team;
 	}
 
-	public PlayerDTO(Long id, String playerName, String name, String role, String tags, TeamDTO team) {
+	public PlayerDTO(Long id, String playerName, String name, RoleDTO role, String tags, TeamDTO team) {
 		super();
 		this.id = id;
 		this.playerName = playerName;
@@ -55,11 +55,11 @@ public class PlayerDTO {
 		this.name = name;
 	}
 
-	public String getRole() {
+	public RoleDTO getRole() {
 		return role;
 	}
 
-	public void setRole(String role) {
+	public void setRole(RoleDTO role) {
 		this.role = role;
 	}
 

@@ -40,8 +40,6 @@ public class Tournament {
 	@ManyToMany(mappedBy = "tournaments", fetch = FetchType.LAZY)
 	private Set<Team> teams = new HashSet<>();
 
-	// =======================================
-
 	public Tournament() {
 		super();
 	}

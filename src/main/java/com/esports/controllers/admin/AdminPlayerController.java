@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.esports.dto.PlayerDTO;
 import com.esports.dto.PlayerFormDTO;
+import com.esports.dto.RoleDTO;
 import com.esports.dto.TeamDTO;
 import com.esports.service.PlayerService;
+import com.esports.service.RoleService;
 import com.esports.service.TeamService;
 
 @Controller
@@ -28,14 +30,16 @@ public class AdminPlayerController {
 	private PlayerService playerService;
 
 	@Autowired
-	private TeamService teamService;
+	private RoleService roleService;
 
-	private String message = "";
+	@Autowired
+	private TeamService teamService;
 
 	@GetMapping("player/create")
 	public String playerCreate(ModelMap model) {
 		PlayerFormDTO playerFormDTO = new PlayerFormDTO();
 		playerFormDTO.setTeams(teamService.getTeamList());
+		playerFormDTO.setRoles(roleService.getRoleList());
 		model.put("playerForm", playerFormDTO);
 		model.put("view", "admin/player/create");
 		return "/_t/frame";
@@ -47,8 +51,11 @@ public class AdminPlayerController {
 
 		TeamDTO teamDTO = new TeamDTO();
 		teamDTO.setId(Long.parseLong(playerForm.getTeamSelected()));
+		RoleDTO roleDTO = new RoleDTO();
+		roleDTO.setId(Long.parseLong(playerForm.getRoleSelected()));
 		PlayerDTO playerDTO = playerForm.getPlayer();
 		playerDTO.setTeam(teamDTO);
+		playerDTO.setRole(roleDTO);
 		playerService.savePlayer(playerDTO);
 		return "redirect:/admin/player/create";
 	}

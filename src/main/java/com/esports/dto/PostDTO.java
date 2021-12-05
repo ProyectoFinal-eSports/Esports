@@ -2,10 +2,13 @@ package com.esports.dto;
 
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class PostDTO {
 
 	private Long id;
 	private String title;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate date;
 	private String shortText;
 	private String longText;

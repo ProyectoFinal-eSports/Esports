@@ -7,6 +7,8 @@ public class PlayerFormDTO {
 	private PlayerDTO player;
 	private List<TeamDTO> teams;
 	private String teamSelected;
+	private List<RoleDTO> roles;
+	private String roleSelected;
 
 	public PlayerDTO getPlayer() {
 		return player;
@@ -32,6 +34,22 @@ public class PlayerFormDTO {
 		this.teamSelected = teamSelected;
 	}
 
+	public List<RoleDTO> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<RoleDTO> roles) {
+		this.roles = roles;
+	}
+
+	public String getRoleSelected() {
+		return roleSelected;
+	}
+
+	public void setRoleSelected(String roleSelected) {
+		this.roleSelected = roleSelected;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -41,7 +59,12 @@ public class PlayerFormDTO {
 		builder.append(teams);
 		builder.append(", teamSelected=");
 		builder.append(teamSelected);
+		builder.append(", roles=");
+		builder.append(roles);
+		builder.append(", roleSelected=");
+		builder.append(roleSelected);
 		builder.append("]");
 		return builder.toString();
 	}
+
 }

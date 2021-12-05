@@ -13,5 +13,7 @@ public interface PlayerService {
 	PlayerDTO savePlayer(PlayerDTO player);
 
 	List<PlayerDTO> getPlayersByTeam(Long teamId);
+	
+	List<PlayerDTO> getPlayersByRole(Long roleId);
 
 }

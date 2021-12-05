@@ -24,7 +24,9 @@ public class Player {
 
 	private String name;
 
-	private String role;
+	@ManyToOne
+	@JoinColumn(name = "role_id")
+	private Role role;
 
 	private String tags;
 
@@ -43,7 +45,7 @@ public class Player {
 		this.id = id;
 	}
 
-	public Player(Long id, String playerName, String name, String role, String tags, Team team) {
+	public Player(Long id, String playerName, String name, Role role, String tags, Team team) {
 		super();
 		this.id = id;
 		this.playerName = playerName;
@@ -53,7 +55,7 @@ public class Player {
 		this.team = team;
 	}
 
-	public Player(String playerName, String name, String role, String tags, Team team) {
+	public Player(String playerName, String name, Role role, String tags, Team team) {
 		super();
 		this.playerName = playerName;
 		this.name = name;
@@ -88,11 +90,11 @@ public class Player {
 		this.name = name;
 	}
 
-	public String getRole() {
+	public Role getRole() {
 		return role;
 	}
 
-	public void setRole(String role) {
+	public void setRole(Role role) {
 		this.role = role;
 	}
 

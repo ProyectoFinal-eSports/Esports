@@ -49,7 +49,6 @@ public class TeamServiceImpl implements TeamService {
 			teamTmp.setPlayers(playerConverter.convert(team.getPlayers()));
 			teamsDto.add(teamTmp);
 			logger.debug("players: " + teamTmp.getPlayers());
-
 		}
 		return teamsDto;
 	}
