@@ -1,12 +1,23 @@
 <div class="container">
-  <form action="/admin/team/c">
-    <div class="form-group">
-      <input type="submit" class="mt-2 btn btn-info" value="Crear" />
-    </div>
-    <br></br>
-    <h1>Lista de equipos</h1>
-    <div class="form-group">
-    	
-    </div>
-  </form>
+	<br> <a href="/admin/team/create" class="mb-3 btn btn-info"
+		role="button">Crear</a> <br>
+
+	<h1>Lista de equipos</h1>
+
+	<table class="table table-hover">
+		<thead class="thead-light">
+			<tr>
+				<th>Nombre</th>
+				<th>Etiquetas</th>
+				<th>Torneos</th>
+			</tr>
+		</thead>
+		<tbody th:each="team: ${teams}">
+			<tr>
+				<td th:text="${team.name}" />
+				<td th:text="${team.tags}" />
+				<td th:text="${team.tournaments.name}"></td>
+			</tr>
+		</tbody>
+	</table>
 </div>
