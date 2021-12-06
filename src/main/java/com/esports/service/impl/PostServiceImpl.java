@@ -30,9 +30,12 @@ public class PostServiceImpl implements PostService {
 	private PostDTOConverter postDTOConverter;
 
 	@Override
-	public List<PostDTO> getPostList() {
+	public List<PostDTO> getPostList(Boolean isRegistrado) {
 		logger.debug("IN - getPosts");
 		List<Post> posts = postRepository.findAll();
+		if (!isRegistrado) {
+			posts = filtrarPosts(posts);
+		}
 		List<PostDTO> postsDto = new ArrayList<>();
 		PostDTO postTmp;
 
@@ -43,6 +46,18 @@ public class PostServiceImpl implements PostService {
 		logger.debug("OUT - getPosts");
 		return postsDto;
 
+	}
+
+	private List<Post> filtrarPosts(List<Post> posts) {
+		List<Post> postFiltrados = new ArrayList<>();
+		for (Post post : posts) {
+			if(post.getRegistered()) {
+				continue;
+			}
+			postFiltrados.add(post);
+		}
+		
+		return postFiltrados;
 	}
 
 	@Override

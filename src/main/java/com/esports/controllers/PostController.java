@@ -2,6 +2,8 @@ package com.esports.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +26,11 @@ public class PostController {
 	private PostService postService;
 
 	@GetMapping
-	public String posts(ModelMap model) {
+	public String posts(ModelMap model, HttpSession session) {
 		logger.debug("IN - posts - /");
 		logger.debug("getting post list");
-		List<PostDTO> posts = postService.getPostList();
+		boolean registrado = session.getAttribute("User") != null;
+		List<PostDTO> posts = postService.getPostList(registrado);
 
 		logger.debug("preparing data for view");
 		model.put("posts", posts);

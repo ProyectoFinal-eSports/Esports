@@ -35,6 +35,8 @@ public class Post {
 	@Column(name = "img_url")
 	private String imgUrl;
 
+	private Boolean registered;
+
 	public Post() {
 	}
 
@@ -130,6 +132,14 @@ public class Post {
 
 	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
+	}
+
+	public Boolean getRegistered() {
+		return registered;
+	}
+
+	public void setRegistered(Boolean registered) {
+		this.registered = registered;
 	}
 
 }

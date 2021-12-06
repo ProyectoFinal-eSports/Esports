@@ -48,14 +48,9 @@ public class AdminPostController {
 		return "redirect:/admin/post/create";
 	}
 
-	/*
-	 * public String postCreatePostFile(MultipartRequest imgFile) {
-	 * 
-	 * }
-	 */
 	@GetMapping("post/read")
 	public String postRead(ModelMap model) {
-		model.put("post", postService.getPostList());
+		model.put("post", postService.getPostList(true));
 		model.put("view", "admin/post/read");
 		return "/_t/frame";
 	}

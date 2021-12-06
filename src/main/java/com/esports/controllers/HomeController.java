@@ -30,7 +30,7 @@ public class HomeController {
 		logger.debug("IN - home - /");
 		logger.debug("getting all posts");
 		logger.debug("getting all games");
-		List<PostDTO> posts = postService.getPostList();
+		List<PostDTO> posts = postService.getPostList(true);
 		List<GameDTO> games = gameService.getGameList();
 
 		logger.debug("preparing data for view");

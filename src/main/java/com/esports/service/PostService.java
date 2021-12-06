@@ -6,7 +6,7 @@ import com.esports.dto.PostDTO;
 
 public interface PostService {
 
-	List<PostDTO> getPostList();
+	List<PostDTO> getPostList(Boolean isRegistrado);
 
 	List<PostDTO> getLatestPosts(Integer numPosts);
 

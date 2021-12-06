@@ -15,6 +15,7 @@ public class PostDTO {
 	private String tags;
 	private String author;
 	private String imgUrl;
+	private Boolean registered;
 
 	public PostDTO() {
 	}
@@ -108,6 +109,14 @@ public class PostDTO {
 		this.imgUrl = imgUrl;
 	}
 
+	public Boolean getRegistered() {
+		return registered;
+	}
+
+	public void setRegistered(Boolean registered) {
+		this.registered = registered;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -127,6 +136,8 @@ public class PostDTO {
 		builder.append(author);
 		builder.append(", imgUrl=");
 		builder.append(imgUrl);
+		builder.append(", registered=");
+		builder.append(registered);
 		builder.append("]");
 		return builder.toString();
 	}
