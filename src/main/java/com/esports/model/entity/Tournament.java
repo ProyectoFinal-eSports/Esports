@@ -3,7 +3,6 @@ package com.esports.model.entity;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -33,7 +32,7 @@ public class Tournament {
 	@Column(name = "img_url")
 	private String imgUrl;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "game_id")
 	private Game game;
 
@@ -49,20 +48,18 @@ public class Tournament {
 		this.id = id;
 	}
 
-	public Tournament(Long id, String name, String region, String imgUrl, Game game) {
+	public Tournament(Long id, String name, String region, Game game) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.region = region;
-		this.imgUrl = imgUrl;
 		this.game = game;
 	}
 
-	public Tournament(String name, String region, String imgUrl, Game game) {
+	public Tournament(String name, String region, Game game) {
 		super();
 		this.name = name;
 		this.region = region;
-		this.imgUrl = imgUrl;
 		this.game = game;
 	}
 
@@ -88,14 +85,6 @@ public class Tournament {
 
 	public void setRegion(String region) {
 		this.region = region;
-	}
-
-	public String getImgUrl() {
-		return imgUrl;
-	}
-
-	public void setImgUrl(String imgUrl) {
-		this.imgUrl = imgUrl;
 	}
 
 	public Game getGame() {

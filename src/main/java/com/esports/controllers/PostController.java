@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import com.esports.model.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.esports.dto.PostDTO;
+import com.esports.model.dto.PostDTO;
 import com.esports.service.PostService;
 
 @Controller
@@ -29,16 +30,17 @@ public class PostController {
 	public String posts(ModelMap model, HttpSession session) {
 		logger.debug("IN - posts - /");
 		logger.debug("getting post list");
-		boolean registrado = session.getAttribute("User") != null;
+
+		boolean registrado = session.getAttribute(Constants.USER_SESSION) != null;
 		List<PostDTO> posts = postService.getPostList(registrado);
 
 		logger.debug("preparing data for view");
 		model.put("posts", posts);
-		model.put("view", "/post/posts");
+		model.put("view", "post/posts");
 
 		logger.debug("OUT - posts - /");
 
-		return "/_t/frame";
+		return "_t/frame";
 	}
 
 	@GetMapping("/detalle")
@@ -49,10 +51,10 @@ public class PostController {
 
 		logger.debug("preparing data for view");
 		model.put("post", post);
-		model.put("view", "/post/post-detail");
+		model.put("view", "post/post-detail");
 
 		logger.debug("OUT - detail - /");
 
-		return "/_t/frame";
+		return "_t/frame";
 	}
 }

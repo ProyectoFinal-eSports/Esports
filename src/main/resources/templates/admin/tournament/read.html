@@ -1,0 +1,35 @@
+<div class="container">
+	<br> <a href="/admin/tournament/create" class="mb-3 btn btn-info"
+		role="button">Crear</a> <br>
+
+	<h1>Lista de torneos</h1>
+
+	<table class="table table-hover">
+		<thead class="thead-light">
+			<tr>
+				<th>Nombre</th>
+				<th>Región</th>
+				<th>Juego</th>
+				<th>Operaciones</th>
+			</tr>
+		</thead>
+		<tbody th:each="tournament: ${tournaments}">
+			<tr>
+
+				<td th:text="${tournament.name}"></td>
+				<td th:text="${tournament.region}"></td>
+				<td th:text="${tournament.game.name}"></td>
+				<td>
+					<a th:href="@{'/tournament/detalle?id=' + ${tournament.id}}"
+					   class="mb-3 btn btn-sm btn-info disabled" role="button">Consultar</a>
+
+					<a th:href="@{'/admin/tournament/update?id=' + ${tournament.id}}"
+					   class="mb-3 btn btn-sm btn-success" role="button">Actualizar</a>
+
+					<a th:href="@{'/admin/tournament/delete?id=' + ${tournament.id}}"
+					   class="mb-3 btn btn-sm btn-danger confirmation" role="button">Eliminar</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

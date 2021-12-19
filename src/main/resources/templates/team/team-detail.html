@@ -1,24 +1,40 @@
-<div class="container">
-	<div class="jumbotron">
-		<h1 th:text="${team.name}"></h1>
+<section class="review-section" style="padding-top: 200px">
+	<div class="container">
+		<div class="review-item">
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="review-pic">
+						<img th:src="${(team.imgUrl != null) ? team.imgUrl : '/upload/img/team/team.png'}"
+							 th:alt="${team.name}" th:title="${team.name}" />
+					</div>
+				</div>
+				<div class="col-lg-8">
+					<div class="review-content text-box text-white">
+						<h3 class="display-4" th:text="${team.name}"></h3>
+						<p th:text="${team.history}"></p>
+						<div class="container mt-3">
+							<table class="table table-dark table-striped">
+								<thead>
+									<tr>
+										<th>Nick de jugador</th>
+										<th>Nombre</th>
+										<th>Rol</th>
+										<th>Juego</th>
+									</tr>
+								</thead>
+								<tbody th:each="player: ${team.players}">
+									<tr>
+										<td th:text="${player.playerName}"></td>
+										<td th:text="${player.name}"></td>
+										<td th:text="${player.role.name}"></td>
+										<td th:text="${player.tags}"></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-	<p th:text="${team.history}"></p>
-	<div class="container mt-3">
-		<table class="table table-hover">
-			<thead class="thead-dark">
-				<tr>
-					<th>Nick de jugador</th>
-					<th>Nombre</th>
-					<th>Rol</th>
-				</tr>
-			</thead>
-			<tbody th:each="player: ${team.players}">
-				<tr>
-					<td th:text="${player.playerName}" />
-					<td th:text="${player.name}" />
-					<td th:text="${player.role.name}" />
-				</tr>
-			</tbody>
-		</table>
-	</div>
-</div>
+</section>

@@ -2,11 +2,12 @@ package com.esports.service.impl;
 
 import java.util.Optional;
 
+import com.esports.model.SecurityRole;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.esports.dto.UserDTO;
+import com.esports.model.dto.UserDTO;
 import com.esports.model.entity.User;
 import com.esports.repository.UserRepository;
 import com.esports.service.UserService;
@@ -18,17 +19,24 @@ public class UserServiceImpl implements UserService {
 	private UserRepository userRepository;
 
 	@Override
-	public User authUser(String loginname, String password) {
+	public UserDTO authUser(String loginname, String password) {
+		UserDTO userDto = null;
+
 		Optional<User> user = userRepository.findByLoginname(loginname);
 		if (!user.isPresent())
 			return null;
 
 		User userData = user.get();
 
-		if (userData.getPassword().equals(password) && userData.isAdmin())
-			return userData;
+		//&& userData.getSecurityRole() == SecurityRole.ADMIN)
+		if (userData.getPassword().equals(password)) {
+			userDto = new UserDTO();
+			BeanUtils.copyProperties(userData, userDto);
+			if (userData.getSecurityRole() == SecurityRole.ADMIN)
+				userDto.setAdmin(true);
+		}
 
-		return null;
+		return userDto;
 	}
 
 	@Override

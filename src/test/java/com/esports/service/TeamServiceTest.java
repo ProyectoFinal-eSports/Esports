@@ -5,18 +5,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.esports.dto.TeamDTO;
+import com.esports.model.dto.TeamDTO;
 
 @SpringBootTest
 class TeamServiceTest {
 
 	@Autowired
 	TeamService teamService;
-
-	@Test
-	void test() {
-		Assertions.assertTrue(true);
-	}
 
 	@Test
 	void getTeamByIdTest() {

@@ -10,7 +10,7 @@
 				<th>Título</th>
 				<th>Fecha</th>
 				<th>Etiquetas</th>
-				<th>Ver</th>
+				<th>Operaciones</th>
 			</tr>
 		</thead>
 		<tbody th:each="post: ${post}">
@@ -19,8 +19,16 @@
 				<td th:text="${post.title}"></td>
 				<td th:text="${#temporals.format(post.date, 'dd-MM-yyyy')}"></td>
 				<td th:text="${post.tags}"></td>
-				<td><a th:href="@{'/post/detalle?id=' + ${post.id}}"
-					class="mb-3 btn btn-info" role="button">Ver noticia</a></td>
+				<td>
+					<a th:href="@{'/post/detalle?id=' + ${post.id}}"
+						class="mb-3 btn btn-sm btn-info" role="button">Consultar</a>
+
+					<a th:href="@{'/admin/post/update?id=' + ${post.id}}"
+					   class="mb-3 btn btn-sm btn-success" role="button">Actualizar</a>
+
+					<a th:href="@{'/admin/post/delete?id=' + ${post.id}}"
+					   class="mb-3 btn btn-sm btn-danger confirmation" role="button">Eliminar</a>
+				</td>
 			</tr>
 		</tbody>
 	</table>

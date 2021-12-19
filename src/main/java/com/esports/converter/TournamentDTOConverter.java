@@ -2,7 +2,7 @@ package com.esports.converter;
 
 import org.springframework.stereotype.Component;
 
-import com.esports.dto.TournamentDTO;
+import com.esports.model.dto.TournamentDTO;
 import com.esports.model.entity.Tournament;
 
 @Component
@@ -19,9 +19,8 @@ public class TournamentDTOConverter implements GenericConverter<TournamentDTO, T
 	public Tournament apply(TournamentDTO input) {
 
 		return input.getId() == null
-				? new Tournament(input.getName(), input.getRegion(), input.getImgUrl(),
-						gameDTOConverter.convert(input.getGame()))
-				: new Tournament(input.getId(), input.getName(), input.getRegion(), input.getImgUrl(),
+				? new Tournament(input.getName(), input.getRegion(), gameDTOConverter.convert(input.getGame()))
+				: new Tournament(input.getId(), input.getName(), input.getRegion(),
 						gameDTOConverter.convert(input.getGame()));
 	}
 

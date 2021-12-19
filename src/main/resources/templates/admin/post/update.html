@@ -1,0 +1,50 @@
+<div class="container">
+	<h1>Actualizar Noticia</h1>
+
+	<img th:src="${(postForm.post.imgUrl != null) ? postForm.post.imgUrl : '/upload/img/post/post.png'}"
+		 th:alt="${postForm.post.title}" th:title="${postForm.post.title}" style="width:320px;height:250px" />
+
+	<form method="post" th:object="${postForm}" enctype="multipart/form-data">
+		<div class="form-group">
+			<label>Id</label>
+			<input type="text" class="form-control" th:field="*{post.id}" readonly/>
+		</div>
+		<div class="form-group">
+			<label>Título de la noticia</label> <input type="text"
+				class="form-control" th:field="*{post.title}" />
+		</div>
+		<div class="form-group">
+			<label>Fecha</label> <input type="date" class="form-control"
+				th:value="*{post.date}" th:field="*{post.date}" />
+		</div>
+		<div class="form-group">
+			<label>Texto introductorio</label>
+			<textarea class="form-control" rows="2" th:field="*{post.shortText}"></textarea>
+		</div>
+		<div class="form-group">
+			<label>Cuerpo de la noticia</label>
+			<textarea class="form-control" rows="10" th:field="*{post.longText}"></textarea>
+		</div>
+		<div class="form-group">
+			<label>Etiquetas</label> <input type="text" class="form-control"
+				th:field="*{post.tags}" />
+		</div>
+		<div class="form-group">
+			<label>Autor</label> <input type="text" class="form-control"
+				th:field="*{post.author}" />
+		</div>
+		<div class="form-check">
+			<input class="form-check-input" type="checkbox" th:field="*{post.registered}" id="registeredCheck">
+			<label class="form-check-label" for="registeredCheck">
+				Usuarios registrados
+			</label>
+		</div>
+		<div class="form-group">
+			<label>Imagen</label>
+			<input type="file" class="form-control" th:field="*{file}" />
+		</div>
+		<div class="mt-3">
+			<button type="submit" class="btn btn-primary">Actualizar</button>
+		</div>
+	</form>
+</div>

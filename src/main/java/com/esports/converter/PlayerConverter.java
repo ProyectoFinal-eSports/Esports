@@ -2,7 +2,7 @@ package com.esports.converter;
 
 import org.springframework.stereotype.Component;
 
-import com.esports.dto.PlayerDTO;
+import com.esports.model.dto.PlayerDTO;
 import com.esports.model.entity.Player;
 
 @Component

@@ -2,7 +2,7 @@ package com.esports.service;
 
 import java.util.List;
 
-import com.esports.dto.PlayerDTO;
+import com.esports.model.dto.PlayerDTO;
 
 public interface PlayerService {
 

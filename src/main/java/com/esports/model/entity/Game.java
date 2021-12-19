@@ -2,13 +2,7 @@ package com.esports.model.entity;
 
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "games")
@@ -23,12 +17,15 @@ public class Game {
 
 	private String genre;
 
+	private String developer;
+
+	@Column(columnDefinition = "TEXT")
 	private String gameplay;
 
 	@Column(name = "img_url")
 	private String imgUrl;
 
-	@OneToMany(mappedBy = "game")
+	@OneToMany(mappedBy = "game", cascade = CascadeType.REMOVE)
 	private List<Tournament> tournaments;
 
 	public Game() {
@@ -39,20 +36,24 @@ public class Game {
 		this.id = id;
 	}
 
-	public Game(Long id, String name, String genre, String gameplay, String imgUrl, List<Tournament> tournaments) {
+	public Game(Long id, String name, String genre, String developer, String gameplay, String imgUrl,
+			List<Tournament> tournaments) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.genre = genre;
+		this.developer = developer;
 		this.gameplay = gameplay;
 		this.imgUrl = imgUrl;
 		this.tournaments = tournaments;
 	}
 
-	public Game(String name, String genre, String gameplay, String imgUrl, List<Tournament> tournaments) {
+	public Game(String name, String genre, String developer, String gameplay, String imgUrl,
+			List<Tournament> tournaments) {
 		super();
 		this.name = name;
 		this.genre = genre;
+		this.developer = developer;
 		this.gameplay = gameplay;
 		this.imgUrl = imgUrl;
 		this.tournaments = tournaments;
@@ -80,6 +81,14 @@ public class Game {
 
 	public void setGenre(String genre) {
 		this.genre = genre;
+	}
+
+	public String getDeveloper() {
+		return developer;
+	}
+
+	public void setDeveloper(String developer) {
+		this.developer = developer;
 	}
 
 	public String getGameplay() {

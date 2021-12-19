@@ -1,0 +1,45 @@
+<header class="header-section">
+	<div class="header-warp">
+		<div class="header-bar-warp d-flex">
+			<a href="/" class="site-logo"> </a>
+			<nav class="top-nav-area w-100 bg-dark">
+				<!-- Menu -->
+				<ul class="nav justify-content-center">
+					<li class="nav-item">
+						<a class="nav-link active" href="/admin/home">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/admin/post/read">Noticias</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/admin/game/read">Juegos</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/admin/team/read">Equipos</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/admin/player/read">Jugadores</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/admin/tournament/read">Torneos</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/">Web</a>
+					</li>
+					<li>
+						<!-- login / logout -->
+						<span class="navbar-text ml-4">
+							<a href="/user/logout">
+								<span th:text="${session.user_session.loginname}" th:unless="${session.user_session == null}"></span>
+							</a>
+							<a href="/user/login">
+								<span th:text="${session.isEmpty()} ? 'Login' : ''"></span>
+							</a>
+						</span>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</header>
+

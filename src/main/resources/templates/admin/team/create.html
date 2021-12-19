@@ -1,17 +1,18 @@
 <div class="container">
   <h1>Nuevo Equipo</h1>
-  <form method="post">
+
+  <form method="post" th:object="${teamForm}" enctype="multipart/form-data">
     <div class="form-group">
       <label>Nombre</label>
-      <input type="text" class="form-control" name="name" id="" />
+      <input type="text" class="form-control" th:field="*{team.name}" />
     </div>
     <div class="form-group">
       <label>Historia</label>
-      <input type="text" class="form-control" name="history" id="" />
+      <textarea class="form-control" rows="10" th:field="*{team.history}" minlength="30"></textarea>
     </div>
     <div class="form-group">
-      <label>Etiquetas</label>
-      <input type="text" name="tags" id="" />
+      <label>Imagen</label>
+      <input type="file" class="form-control" th:field="*{file}" />
     </div>
     <button type="submit" class="btn btn-primary">Crear</button>
   </form>

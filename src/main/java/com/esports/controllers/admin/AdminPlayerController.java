@@ -12,16 +12,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.esports.dto.PlayerDTO;
-import com.esports.dto.PlayerFormDTO;
-import com.esports.dto.RoleDTO;
-import com.esports.dto.TeamDTO;
+import com.esports.model.dto.PlayerDTO;
+import com.esports.model.dto.PlayerFormDTO;
+import com.esports.model.dto.RoleDTO;
+import com.esports.model.dto.TeamDTO;
 import com.esports.service.PlayerService;
 import com.esports.service.RoleService;
 import com.esports.service.TeamService;
 
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("/admin/player")
 public class AdminPlayerController {
 
 	public static final Logger logger = LoggerFactory.getLogger(AdminPlayerController.class);
@@ -35,17 +35,18 @@ public class AdminPlayerController {
 	@Autowired
 	private TeamService teamService;
 
-	@GetMapping("player/create")
+	@GetMapping("/create")
 	public String playerCreate(ModelMap model) {
 		PlayerFormDTO playerFormDTO = new PlayerFormDTO();
 		playerFormDTO.setTeams(teamService.getTeamList());
 		playerFormDTO.setRoles(roleService.getRoleList());
 		model.put("playerForm", playerFormDTO);
 		model.put("view", "admin/player/create");
-		return "/_t/frame";
+
+		return "_t_admin/frame";
 	}
 
-	@PostMapping("player/create")
+	@PostMapping("/create")
 	public String playerCreatePost(@ModelAttribute PlayerFormDTO playerForm, ModelMap model, HttpSession session) {
 		logger.debug("PlayerFormDTO: " + playerForm);
 
@@ -57,14 +58,15 @@ public class AdminPlayerController {
 		playerDTO.setTeam(teamDTO);
 		playerDTO.setRole(roleDTO);
 		playerService.savePlayer(playerDTO);
-		return "redirect:/admin/player/create";
+
+		return "redirect:/admin/player/read";
 	}
 
-	@GetMapping("player/read")
+	@GetMapping("/read")
 	public String teamRead(ModelMap model) {
 		model.put("players", playerService.getPlayerList());
 		model.put("view", "admin/player/read");
-		return "/_t/frame";
-	}
 
+		return "_t_admin/frame";
+	}
 }

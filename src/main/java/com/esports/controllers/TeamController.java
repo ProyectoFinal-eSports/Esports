@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.esports.dto.TeamDTO;
+import com.esports.model.dto.TeamDTO;
 import com.esports.service.TeamService;
 
 @Controller
@@ -33,10 +33,10 @@ public class TeamController {
 
 		logger.debug("preparing data for view");
 		model.put("teams", teams);
-		model.put("view", "/team/teams");
+		model.put("view", "team/teams");
 		logger.debug("OUT - teams - /");
 
-		return "/_t/frame";
+		return "_t/frame";
 	}
 
 	@GetMapping("/detalle")
@@ -47,10 +47,10 @@ public class TeamController {
 
 		logger.debug("preparing data for view");
 		model.put("team", team);
-		model.put("view", "/team/team-detail");
+		model.put("view", "team/team-detail");
 
 		logger.debug("OUT - detail - /");
 
-		return "/_t/frame";
+		return "_t/frame";
 	}
 }

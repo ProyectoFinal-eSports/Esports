@@ -8,15 +8,25 @@
 		<thead class="thead-light">
 			<tr>
 				<th>Nombre</th>
-				<th>Etiquetas</th>
-				<th>Torneos</th>
+				<th>Historia</th>
+				<th>Operaciones</th>
 			</tr>
 		</thead>
 		<tbody th:each="team: ${teams}">
 			<tr>
-				<td th:text="${team.name}" />
-				<td th:text="${team.tags}" />
-				<td th:text="${team.tournaments.name}"></td>
+
+				<td th:text="${team.name}"></td>
+				<td th:text="${#strings.substring(team.history, 0, 30)}"> ...</td>
+				<td>
+					<a th:href="@{'/team/detalle?id=' + ${team.id}}"
+					   class="mb-3 btn btn-sm btn-info" role="button">Consultar</a>
+
+					<a th:href="@{'/admin/team/update?id=' + ${team.id}}"
+					   class="mb-3 btn btn-sm btn-success" role="button">Actualizar</a>
+
+					<a th:href="@{'/admin/team/delete?id=' + ${team.id}}"
+					   class="mb-3 btn btn-sm btn-danger confirmation" role="button">Eliminar</a>
+				</td>
 			</tr>
 		</tbody>
 	</table>

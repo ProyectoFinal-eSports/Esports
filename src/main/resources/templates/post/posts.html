@@ -1,23 +1,42 @@
-<div class="container">
-	<div class="jumbotron">
-		<h1>Noticias</h1>
-	</div>
-	<div>
-		<table>
-			<tr th:each="post: ${posts}">
-			   <td><img style="width:200px;height:200px" th:src="@{${post.imgUrl}}" />
-			   </td>
-				<td>
-					<a th:href="@{'/post/detalle?id=' + ${post.id}}">
-						<p th:text="${post.title}" />
-				    </a>
-					<p th:text="${post.shortText}" />
-					<p>
-						<span th:text="${#temporals.format(post.date, 'dd-MM-yyyy')}" />
-						| <span th:text="${post.author}" />
-					</p>
-				</td>
-			</tr>
-		</table>
-	</div>
-</div>
+<section
+  class="page-top-section set-bg-posts"
+  data-setbg="../../static/img/page-top-bg/3.jpg"
+>
+  <div class="page-info">
+    <h2>Noticias</h2>
+    <div class="site-breadcrumb">
+      <a href="/">Home</a> / <span>Noticias</span>
+    </div>
+  </div>
+</section>
+<section class="blog-page">
+  <div class="container">
+    <div>
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-9 col-lg-8 col-md-7">
+            <div th:each="post: ${posts}" class="big-blog-item">
+              <!-- <img th:src="@{${post.imgUrl}}" alt="#" class="blog-thumbnail" /> -->
+              <img th:src="${(post.imgUrl != null) ? post.imgUrl : '/upload/img/post/post.png'}" th:alt="${post.title}"
+                   class="blog-thumbnail" />
+              <div class="blog-content text-box text-white">
+                <div
+                  th:text="${#temporals.format(post.date, 'dd-MM-yyyy')}"
+                  class="top-meta"
+                ></div>
+                <h3 th:text="${post.title}"></h3>
+                <p th:text="${post.shortText}"></p>
+                <p th:text="${post.author}"></p>
+                <a
+                  th:href="@{'/post/detalle?id=' + ${post.id}}"
+                  class="read-more"
+                  >Ver más <img src="img/icons/double-arrow.png" alt="#"
+                /></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,35 @@
+<div class="container">
+	<br> <a href="/admin/game/create" class="mb-3 btn btn-info"
+		role="button">Crear</a> <br>
+
+	<h1>Lista de juegos</h1>
+
+	<table class="table table-hover">
+		<thead class="thead-light">
+			<tr>
+				<th>Nombre</th>
+				<th>Genero</th>
+				<th>Desarrollador</th>
+				<th>Operaciones</th>
+			</tr>
+		</thead>
+		<tbody th:each="game: ${games}">
+			<tr>
+
+				<td th:text="${game.name}"></td>
+				<td th:text="${game.genre}"></td>
+				<td th:text="${game.developer}"></td>
+				<td>
+					<a th:href="@{'/game/detalle?id=' + ${game.id}}"
+					   class="mb-3 btn btn-sm btn-info" role="button">Consultar</a>
+
+					<a th:href="@{'/admin/game/update?id=' + ${game.id}}"
+					   class="mb-3 btn btn-sm btn-success" role="button">Actualizar</a>
+
+					<a th:href="@{'/admin/game/delete?id=' + ${game.id}}"
+					   class="mb-3 btn btn-sm btn-danger confirmation" role="button">Eliminar</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

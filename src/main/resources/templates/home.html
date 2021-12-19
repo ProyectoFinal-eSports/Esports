@@ -1,38 +1,86 @@
-<div class="container">
-	<div class="jumbotron">
-		<h1>Esports</h1>
-		<fieldset>
-			<legend>Menú principal</legend>
-		</fieldset>
+<section class="hero-section overflow-hidden">
+	<div class="hero-slider owl-carousel">
+		<div
+			class="hero-item set-bg d-flex align-items-center justify-content-center text-center"
+			data-setbg="img/page-top-bg/fondo-home.png">
+			<div class="container">
+
+				<h2 class="mb-4">Esports</h2>
+
+				<p>Los deportes electrónicos, también llamados esports, son
+					competiciones de videojuegos que se han convertido en eventos de
+					gran popularidad. Por lo general, los deportes electrónicos son
+					competiciones de videojuegos multijugador, particularmente entre
+					jugadores profesionales.</p>
+				<a href="/post" class="site-btn">Ver más <img
+					src="img/icons/double-arrow.png" alt="#" /></a>
+			</div>
+		</div>
 	</div>
-	<div>
-		<table>
-			<tr th:each="post: ${posts}">
-				<td>
-					<p>
-						<img th:src="@{${post.imgUrl}}" />
-					</p> <a th:href="@{'/post/detalle?id=' + ${post.id}}">
-						<p th:text="${post.title}" />
-				</a>
-					<p th:text="${post.shortText}" />
-					<p>
-						<span th:text="${#temporals.format(post.date, 'dd-MM-yyyy')}" />
-						| <span th:text="${post.author}" />
-					</p>
-				</td>
-			</tr>
-		</table>
+</section>
+
+<section id="news" class="intro-section">
+
+	<div class="container">
+		<br>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-12 mb-4">
+					<h2 style="text-align: center; color: white;">Noticias</h2>
+				</div>
+				<div th:each="post: ${posts}" class="col-md-4">
+					<div class="intro-text-box text-box text-white">
+						<div th:text="${#temporals.format(post.date, 'dd-MM-yyyy')}"
+							class="top-meta"></div>
+						<div style="height: 150px;">
+							<h3 th:text="${post.title}"></h3>
+						</div>
+						<img th:src="${(post.imgUrl != null) ? post.imgUrl : '/upload/img/post/post.png'}" th:alt="${post.title}"/>
+						<p th:text="${post.shortText}" class="font-weight-bold"></p>
+						<span th:text="${post.author}" class="badge badge-info"></span> <br>
+						<a th:href="@{'/post/detalle?id=' + ${post.id}}" class="read-more">Ver
+							más <img src="img/icons/double-arrow.png" alt="#" />
+						</a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<br> <br>
 	</div>
-	<div>
-		<table>
-			<tr th:each="game: ${games}">
-				<td><a th:href="@{'/game/detalle?id=' + ${game.id}}"> <img
-						style="width: 150px; height: 225px" th:src="@{${game.imgUrl}}" />
-				</a></td>
-				<td>
-					<p th:text="${game.name}"></p>
-				</td>
-			</tr>
-		</table>
+</section>
+<section class="games-section">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="row">
+					<div class="col-12 mb-4">
+						<h2 style="text-align: center; color: white;">Juegos</h2>
+					</div>
+					<div th:each="game: ${games}" class="col-xs-12 col-lg-3 col-md-4">
+						<div class="game-item">
+							<img style="width: 300px; height: 250px"
+								th:src="@{${game.imgUrl}}" />
+							<h5 th:text="${game.name}"></h5>
+							<p th:text="${game.developer}"></p>
+							<a th:href="@{'/game/detalle?id=' + ${game.id}}"
+								class="read-more">Ver más <img
+								src="img/icons/double-arrow.png" alt="#" /></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-</div>
+</section>
+
+<section class="intro-video-section set-bg-video d-flex align-items-end">
+	<div class="container">
+		<div class="video-text text-white">
+			<h2>Worlds Finals 2021</h2>
+			<span class="badge badge-info">¡La Gran Final de los Mundiales
+				de League of Legends!</span>
+		</div>
+	</div>
+</section>

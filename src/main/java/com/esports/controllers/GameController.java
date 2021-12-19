@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.esports.dto.GameDTO;
+import com.esports.model.dto.GameDTO;
 import com.esports.service.GameService;
 
 @Controller
@@ -33,10 +33,10 @@ public class GameController {
 
 		logger.debug("preparing data for view");
 		model.put("games", games);
-		model.put("view", "/game/games");
+		model.put("view", "game/games");
 		logger.debug("OUT - games - /");
 
-		return "/_t/frame";
+		return "_t/frame";
 	}
 
 	@GetMapping("/detalle")
@@ -47,11 +47,11 @@ public class GameController {
 
 		logger.debug("preparing data for view");
 		model.put("game", game);
-		model.put("view", "/game/game-detail");
+		model.put("view", "game/game-detail");
 
 		logger.debug("OUT - detail - /");
 
-		return "/_t/frame";
+		return "_t/frame";
 	}
 
 }

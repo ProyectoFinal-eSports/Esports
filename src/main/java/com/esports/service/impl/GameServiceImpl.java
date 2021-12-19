@@ -2,6 +2,7 @@ package com.esports.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,8 +12,8 @@ import org.springframework.stereotype.Service;
 import com.esports.converter.GameConverter;
 import com.esports.converter.GameDTOConverter;
 import com.esports.converter.TournamentConverter;
-import com.esports.dto.GameDTO;
-import com.esports.dto.TournamentDTO;
+import com.esports.model.dto.GameDTO;
+import com.esports.model.dto.TournamentDTO;
 import com.esports.model.entity.Game;
 import com.esports.repository.GameRepository;
 import com.esports.service.GameService;
@@ -65,16 +66,36 @@ public class GameServiceImpl implements GameService {
 	public GameDTO saveGame(GameDTO game) {
 		Game gameToSave = gameDTOConverter.convert(game);
 		Game gameSaved = gameRepository.save(gameToSave);
+		game.setId(gameSaved.getId());
 
+		/*
 		for (TournamentDTO tournamentDto : game.getTournaments()) {
 			tournamentDto.setGame(gameConverter.convert(gameSaved));
 			tournamentService.saveTournament(tournamentDto);
 		}
+		*/
 
-		final GameDTO gameDtoResponse = gameConverter.convert(gameSaved);
-		gameDtoResponse.setTournaments(tournamentService.getTournamentsByGame(gameDtoResponse.getId()));
+		//final GameDTO gameDtoResponse = gameConverter.convert(gameSaved);
+		//gameDtoResponse.setTournaments(tournamentService.getTournamentsByGame(gameDtoResponse.getId()));
 
-		return gameDtoResponse;
+		return game;
 	}
 
+	@Override
+	public GameDTO updateGame(GameDTO gameDTO) {
+		Long id = gameDTO.getId();
+		Optional<Game> game = gameRepository.findById(id);
+		if (!game.isPresent())
+			return null;
+
+		Game gameUpdated = gameDTOConverter.convert(gameDTO);
+		gameRepository.save(gameUpdated);
+
+		return gameDTO;
+	}
+
+	@Override
+	public void deleteGame(Long id) {
+		gameRepository.deleteById(id);
+	}
 }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.esports.converter.PlayerConverter;
 import com.esports.converter.PlayerDTOConverter;
-import com.esports.dto.PlayerDTO;
+import com.esports.model.dto.PlayerDTO;
 import com.esports.model.entity.Player;
 import com.esports.model.entity.Role;
 import com.esports.model.entity.Team;

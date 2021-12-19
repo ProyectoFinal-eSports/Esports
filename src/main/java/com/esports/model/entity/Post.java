@@ -41,26 +41,17 @@ public class Post {
 	}
 
 	public Post(Long id) {
-		super();
 		this.id = id;
 	}
 
 	public Post(Long id, String title, LocalDate date, String shortText, String longText, String tags, String author,
-			String imgUrl) {
-		super();
+			String imgUrl, Boolean registered) {
+		this(title, date, shortText, longText, tags, author, imgUrl, registered);
 		this.id = id;
-		this.title = title;
-		this.date = date;
-		this.shortText = shortText;
-		this.longText = longText;
-		this.tags = tags;
-		this.author = author;
-		this.imgUrl = imgUrl;
 	}
 
 	public Post(String title, LocalDate date, String shortText, String longText, String tags, String author,
-			String imgUrl) {
-		super();
+			String imgUrl, Boolean registered) {
 		this.title = title;
 		this.date = date;
 		this.shortText = shortText;
@@ -68,6 +59,7 @@ public class Post {
 		this.tags = tags;
 		this.author = author;
 		this.imgUrl = imgUrl;
+		this.registered = registered;
 	}
 
 	public Long getId() {
@@ -135,6 +127,10 @@ public class Post {
 	}
 
 	public Boolean getRegistered() {
+		return registered;
+	}
+
+	public Boolean isRegistered() {
 		return registered;
 	}
 

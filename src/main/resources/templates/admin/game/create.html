@@ -1,24 +1,27 @@
 <div class="container">
-  <h1>Nuevo Juego</h1>
-  <form method="post">
-    <input
-      type="hidden"
-      class="form-control"
-      name="playerId"
-      th:value="${playerId}"
-    />
-    <div class="form-group">
-      <label>Nombre</label>
-      <input type="text" class="form-control" name="name" id="" />
-    </div>
-    <div class="form-group">
-      <label>Género</label>
-      <input type="text" class="form-control" name="genre" id="" />
-    </div>
-    <div class="form-group">
-      <label>Jugabilidad</label>
-      <input type="text" class="form-control" name="gameplay" id="" />
-    </div>
-    <button type="submit" class="btn btn-primary">Crear</button>
-  </form>
+	<h1>Nuevo Juego</h1>
+
+	<form method="post" th:object="${gameForm}" enctype="multipart/form-data">
+		<div class="form-group">
+			<label>Nombre</label>
+			<input type="text" class="form-control" th:field="*{game.name}" />
+		</div>
+		<div class="form-group">
+			<label>Género</label>
+			<input type="text" class="form-control" th:field="*{game.genre}" />
+		</div>
+		<div class="form-group">
+			<label>Developer</label>
+			<input type="text" class="form-control" th:field="*{game.developer}" />
+		</div>
+		<div class="form-group">
+			<label>Jugabilidad</label>
+			<textarea class="form-control" rows="10" th:field="*{game.gameplay}"></textarea>
+		</div>
+		<div class="form-group">
+			<label>Imagen</label>
+			<input type="file" class="form-control" th:field="*{file}" />
+		</div>
+		<button type="submit" class="btn btn-primary">Crear</button>
+	</form>
 </div>

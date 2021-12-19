@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.esports.converter.TournamentConverter;
 import com.esports.converter.TournamentDTOConverter;
-import com.esports.dto.TournamentDTO;
+import com.esports.model.dto.TournamentDTO;
 import com.esports.model.entity.Game;
 import com.esports.model.entity.Tournament;
 import com.esports.repository.TournamentRepository;
@@ -46,10 +46,26 @@ public class TournamentServiceImpl implements TournamentService {
 	}
 
 	@Override
+	public TournamentDTO updateTournament(TournamentDTO tournamentDTO) {
+		Optional<Tournament> tournament = tournamentRepository.findById(tournamentDTO.getId());
+		if (!tournament.isPresent())
+			return null;
+
+		Tournament tournamentSaved = tournamentRepository.save(tournamentDTOConverter.convert(tournamentDTO));
+		TournamentDTO newTournamentSaved = tournamentConverter.convert(tournamentSaved);
+		return newTournamentSaved;
+	}
+
+	@Override
 	public List<TournamentDTO> getTournamentsByGame(Long gameId) {
 		Optional<List<Tournament>> tournaments = tournamentRepository.findByGame(new Game(gameId));
 
 		return tournamentConverter.convert(tournaments.orElseThrow());
+	}
+
+	@Override
+	public void deleteTournament(Long id) {
+		tournamentRepository.deleteById(id);
 	}
 
 }

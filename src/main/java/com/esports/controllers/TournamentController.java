@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.esports.dto.TournamentDTO;
+import com.esports.model.dto.TournamentDTO;
 import com.esports.service.TournamentService;
 
 @Controller
@@ -31,9 +31,9 @@ public class TournamentController {
 
 		logger.debug("preparing data for view");
 		model.put("tournaments", tournaments);
-		model.put("view", "/tournament/tournaments");
+		model.put("view", "tournament/tournaments");
 
-		return "/_t/frame";
+		return "_t/frame";
 	}
 
 	@GetMapping("/detalle")
@@ -44,10 +44,10 @@ public class TournamentController {
 
 		logger.debug("preparing data for view");
 		model.put("tournament", tournament);
-		model.put("view", "/tournament/tournament-detail");
+		model.put("view", "tournament/tournament-detail");
 
 		logger.debug("OUT - detail - /");
 
-		return "/_t/frame";
+		return "_t/frame";
 	}
 }

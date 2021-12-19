@@ -30,7 +30,8 @@ public class Team {
 	@Column(columnDefinition = "TEXT")
 	private String history;
 
-	private String tags;
+	@Column(name = "img_url")
+	private String imgUrl;
 
 	@OneToMany(mappedBy = "team")
 	private List<Player> players;
@@ -48,20 +49,20 @@ public class Team {
 		this.id = id;
 	}
 
-	public Team(Long id, String name, String history, String tags, List<Player> players) {
+	public Team(Long id, String name, String history, String imgUrl, List<Player> players) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.history = history;
-		this.tags = tags;
+		this.imgUrl = imgUrl;
 		this.players = players;
 	}
 
-	public Team(String name, String history, String tags, List<Player> players) {
+	public Team(String name, String history, String imgUrl, List<Player> players) {
 		super();
 		this.name = name;
 		this.history = history;
-		this.tags = tags;
+		this.imgUrl = imgUrl;
 		this.players = players;
 	}
 
@@ -89,12 +90,12 @@ public class Team {
 		this.history = history;
 	}
 
-	public String getTags() {
-		return tags;
+	public String getImgUrl() {
+		return imgUrl;
 	}
 
-	public void setTags(String tags) {
-		this.tags = tags;
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
 	}
 
 	public List<Player> getPlayers() {

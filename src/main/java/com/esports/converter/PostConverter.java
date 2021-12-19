@@ -2,7 +2,7 @@ package com.esports.converter;
 
 import org.springframework.stereotype.Component;
 
-import com.esports.dto.PostDTO;
+import com.esports.model.dto.PostDTO;
 import com.esports.model.entity.Post;
 
 @Component
@@ -12,9 +12,9 @@ public class PostConverter implements GenericConverter<Post, PostDTO> {
 	public PostDTO apply(Post input) {
 
 		return input.getId() == null
-				? new PostDTO(input.getTitle(), input.getDate(), input.getShortText(), input.getLongText(),
+				? new PostDTO(input.getTitle(), input.getDate(), input.getRegistered(), input.getShortText(), input.getLongText(),
 						input.getTags(), input.getAuthor(), input.getImgUrl())
-				: new PostDTO(input.getId(), input.getTitle(), input.getDate(), input.getShortText(),
+				: new PostDTO(input.getId(), input.getTitle(), input.getDate(), input.getRegistered(), input.getShortText(),
 						input.getLongText(), input.getTags(), input.getAuthor(), input.getImgUrl());
 	}
 

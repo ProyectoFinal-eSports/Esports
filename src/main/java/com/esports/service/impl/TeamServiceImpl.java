@@ -2,6 +2,7 @@ package com.esports.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,8 +12,8 @@ import org.springframework.stereotype.Service;
 import com.esports.converter.PlayerConverter;
 import com.esports.converter.TeamConverter;
 import com.esports.converter.TeamDTOConverter;
-import com.esports.dto.PlayerDTO;
-import com.esports.dto.TeamDTO;
+import com.esports.model.dto.PlayerDTO;
+import com.esports.model.dto.TeamDTO;
 import com.esports.model.entity.Team;
 import com.esports.repository.TeamRepository;
 import com.esports.service.PlayerService;
@@ -65,16 +66,26 @@ public class TeamServiceImpl implements TeamService {
 	public TeamDTO saveTeam(TeamDTO team) {
 		Team teamToSave = teamDTOConverter.convert(team);
 		Team teamSaved = teamRepository.save(teamToSave);
+		team.setId(teamSaved.getId());
 
-		for (PlayerDTO playerDto : team.getPlayers()) {
-			playerDto.setTeam(teamConverter.convert(teamSaved));
-			playerService.savePlayer(playerDto);
-		}
+		return team;
+	}
 
-		final TeamDTO teamDtoResponse = teamConverter.convert(teamSaved);
-		teamDtoResponse.setPlayers(playerService.getPlayersByTeam(teamDtoResponse.getId()));
+	@Override
+	public TeamDTO updateTeam(TeamDTO team) {
+		Optional<Team> teamToUpdate = teamRepository.findById(team.getId());
+		if (!teamToUpdate.isPresent())
+			return null;
 
-		return teamDtoResponse;
+		Team teamToSave = teamDTOConverter.convert(team);
+		Team teamSaved = teamRepository.save(teamToSave);
+
+		return team;
+	}
+
+	@Override
+	public void deleteTeam(Long id) {
+		teamRepository.deleteById(id);
 	}
 
 }

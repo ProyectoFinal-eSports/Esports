@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.view.RedirectView;
@@ -13,22 +14,22 @@ public class GlobalExceptionHandler {
 	private static Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
 	@ExceptionHandler(DangerException.class)
-	public RedirectView danger(HttpSession session, DangerException ex) {
+	public String danger(HttpSession session, DangerException ex) {
 		return handleError(session, ex);
 	}
 
 	@ExceptionHandler(InfoException.class)
-	public RedirectView info(HttpSession session, InfoException ex) {
+	public String info(HttpSession session, InfoException ex) {
 		return handleError(session, ex);
 	}
 
 	@ExceptionHandler(RuntimeException.class)
-	public RedirectView runtimeEx(HttpSession session, RuntimeException rex) {
+	public String runtimeEx(HttpSession session, RuntimeException rex) {
 		return handleError(session, rex);
 	}
 
-	private RedirectView handleError(HttpSession s, Exception e) {
-		logger.info("handleError >>>");
+	private String handleError(HttpSession session, Exception e) {
+		logger.info("handleError >>> : "+e);
 
 		String mensaje = e.getMessage() != null && e.getMessage() != "" ? e.getMessage().split("@")[0]
 				: "Ha ocurrido un error. Pulsa para volver a home";
@@ -36,11 +37,15 @@ public class GlobalExceptionHandler {
 				? e.getMessage().split("@")[1]
 				: "/";
 
-		s.setAttribute("_mensaje", mensaje);
-		s.setAttribute("_link", link);
-		s.setAttribute("_severity", "info");
-		s.setAttribute("view", "/info");
+		session.setAttribute("_mensaje", mensaje);
+		session.setAttribute("_link", link);
+		session.setAttribute("_severity", "info");
+		session.setAttribute("view", "/info");
 
-		return new RedirectView("/_t/frame");
+		//return new RedirectView("/_t/frame");
+
+		return "redirect:/info";
+
+		//return "/_t/frame";
 	}
 }
