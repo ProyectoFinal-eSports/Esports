@@ -45,12 +45,11 @@ public class AdminGameController {
 
 		String resource = null;
 		if (gameForm.getFile() != null)
-			resource=utilService.saveResourceFile(gameForm.getFile(),
-					Constants.STATIC_FILES_PATH +
-							Constants.IMG_UPLOAD_DIR_GAME);
+			resource = utilService.saveResourceFile(gameForm.getFile(),
+					Constants.STATIC_FILES_PATH + Constants.IMG_UPLOAD_DIR_GAME);
 
 		if (resource != null) {
-			resource=Constants.IMG_UPLOAD_DIR_GAME + resource;
+			resource = Constants.IMG_UPLOAD_DIR_GAME + resource;
 			gameDTO.setImgUrl(resource);
 		}
 
@@ -61,7 +60,7 @@ public class AdminGameController {
 
 	@GetMapping("/update")
 	public String update(@RequestParam("id") Long id, ModelMap model) {
-		GameDTO gameDTO=gameService.getGameById(id);
+		GameDTO gameDTO = gameService.getGameById(id);
 		GameFormDTO gameFormDTO = new GameFormDTO();
 		gameFormDTO.setGame(gameDTO);
 
@@ -79,12 +78,11 @@ public class AdminGameController {
 
 		String resource = null;
 		if (gameForm.getFile() != null)
-			resource=utilService.saveResourceFile(gameForm.getFile(),
-					Constants.STATIC_FILES_PATH +
-					     Constants.IMG_UPLOAD_DIR_GAME);
+			resource = utilService.saveResourceFile(gameForm.getFile(),
+					Constants.STATIC_FILES_PATH + Constants.IMG_UPLOAD_DIR_GAME);
 
 		if (resource != null) {
-			resource=Constants.IMG_UPLOAD_DIR_GAME + resource;
+			resource = Constants.IMG_UPLOAD_DIR_GAME + resource;
 			gameDTO.setImgUrl(resource);
 		}
 

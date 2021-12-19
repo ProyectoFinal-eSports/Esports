@@ -13,6 +13,8 @@ import javax.persistence.Table;
 @Table(name = "roles")
 public class Role {
 
+	// =======================================
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -21,6 +23,8 @@ public class Role {
 
 	@OneToMany(mappedBy = "role")
 	private List<Player> players;
+
+	// =======================================
 
 	public Role() {
 	}
@@ -41,6 +45,8 @@ public class Role {
 		this.name = name;
 		this.players = players;
 	}
+
+	// =======================================
 
 	public Long getId() {
 		return id;

@@ -47,12 +47,11 @@ public class AdminPostController {
 
 		String resource = null;
 		if (postForm.getFile() != null)
-			resource=utilService.saveResourceFile(postForm.getFile(),
-					                         Constants.STATIC_FILES_PATH +
-												  Constants.IMG_UPLOAD_DIR_POST);
+			resource = utilService.saveResourceFile(postForm.getFile(),
+					Constants.STATIC_FILES_PATH + Constants.IMG_UPLOAD_DIR_POST);
 
 		if (resource != null) {
-			resource=Constants.IMG_UPLOAD_DIR_POST + resource;
+			resource = Constants.IMG_UPLOAD_DIR_POST + resource;
 			postDTO.setImgUrl(resource);
 		}
 
@@ -63,7 +62,7 @@ public class AdminPostController {
 
 	@GetMapping("/update")
 	public String update(@RequestParam("id") Long id, ModelMap model) {
-		PostDTO postDTO=postService.getPostById(id);
+		PostDTO postDTO = postService.getPostById(id);
 		PostFormDTO postFormDTO = new PostFormDTO();
 		postFormDTO.setPost(postDTO);
 
@@ -81,12 +80,11 @@ public class AdminPostController {
 
 		String resource = null;
 		if (postForm.getFile() != null)
-			resource=utilService.saveResourceFile(postForm.getFile(),
-					                         Constants.STATIC_FILES_PATH +
-							                      Constants.IMG_UPLOAD_DIR_POST);
+			resource = utilService.saveResourceFile(postForm.getFile(),
+					Constants.STATIC_FILES_PATH + Constants.IMG_UPLOAD_DIR_POST);
 
 		if (resource != null) {
-			resource=Constants.IMG_UPLOAD_DIR_POST + resource;
+			resource = Constants.IMG_UPLOAD_DIR_POST + resource;
 			postDTO.setImgUrl(resource);
 		}
 

@@ -21,13 +21,13 @@
 				<td th:text="${player.role.name}" />
 				<td th:text="${player.team.name}"></td>
 				<td>
-					<a th:href="@{'/game/detalle?id=' + ${player.id}}"
-					   class="mb-3 btn btn-sm btn-info" role="button">Consultar</a>
+					<a th:href="@{'/player/detalle?id=' + ${player.id}}"
+					   class="mb-3 btn btn-sm btn-info disabled" role="button">Consultar</a>
 
-					<a th:href="@{'/admin/game/update?id=' + ${player.id}}"
+					<a th:href="@{'/admin/player/update?id=' + ${player.id}}"
 					   class="mb-3 btn btn-sm btn-success" role="button">Actualizar</a>
 
-					<a th:href="@{'/admin/game/delete?id=' + ${player.id}}"
+					<a th:href="@{'/admin/player/delete?id=' + ${player.id}}"
 					   class="mb-3 btn btn-sm btn-danger confirmation" role="button">Eliminar</a>
 				</td>
 			</tr>

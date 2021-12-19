@@ -28,6 +28,6 @@ public class TeamFormDTO {
         return "TeamFormDTO{" +
                 "team=" + team +
                 ", file=" + (file == null ? "" : file.getOriginalFilename()) +
-                '}';
-    }
+				'}';
+	}
 }

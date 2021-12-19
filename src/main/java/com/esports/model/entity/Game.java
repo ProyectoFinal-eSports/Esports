@@ -8,6 +8,8 @@ import javax.persistence.*;
 @Table(name = "games")
 public class Game {
 
+	// =======================================
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -27,6 +29,8 @@ public class Game {
 
 	@OneToMany(mappedBy = "game", cascade = CascadeType.REMOVE)
 	private List<Tournament> tournaments;
+
+	// =======================================
 
 	public Game() {
 		super();
@@ -58,6 +62,8 @@ public class Game {
 		this.imgUrl = imgUrl;
 		this.tournaments = tournaments;
 	}
+
+	// =======================================
 
 	public Long getId() {
 		return id;

@@ -25,8 +25,8 @@ public class PostDTO {
 		this(null, title, date, registered, shortText, longText, tags, author, imgUrl);
 	}
 
-	public PostDTO(Long id, String title, LocalDate date, Boolean registered, String shortText, String longText, String tags, String author,
-			String imgUrl) {
+	public PostDTO(Long id, String title, LocalDate date, Boolean registered, String shortText, String longText,
+			String tags, String author, String imgUrl) {
 		this.id = id;
 		this.title = title;
 		this.date = date;

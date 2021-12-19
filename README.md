@@ -1,29 +1,12 @@
-# README #
+# Esports #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+Portal Web sobre deportes electrónicos
 
-### What is this repository for? ###
+## Proyecto Web basado en Spring boot 2 
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+### Perfiles de ejecución ###
 
-### How do I get set up? ###
+* local (H2 Base de datos en memoria) 	  	`-Dspring.profiles.active=local`
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
 
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+* pro (MariaDB Servidor Web phpmyadmin)   	`-Dspring.profiles.active=pro`

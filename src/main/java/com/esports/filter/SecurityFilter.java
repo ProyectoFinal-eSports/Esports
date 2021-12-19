@@ -41,6 +41,6 @@ public class SecurityFilter extends HttpFilter {
             return;
         }
 
-        chain.doFilter(request, response);
-    }
+		chain.doFilter(request, response);
+	}
 }

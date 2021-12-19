@@ -29,15 +29,14 @@ public class Tournament {
 
 	private String region;
 
-	@Column(name = "img_url")
-	private String imgUrl;
-
 	@ManyToOne
 	@JoinColumn(name = "game_id")
 	private Game game;
 
 	@ManyToMany(mappedBy = "tournaments", fetch = FetchType.LAZY)
 	private Set<Team> teams = new HashSet<>();
+
+	// =======================================
 
 	public Tournament() {
 		super();
@@ -62,6 +61,8 @@ public class Tournament {
 		this.region = region;
 		this.game = game;
 	}
+
+	// =======================================
 
 	public Long getId() {
 		return id;

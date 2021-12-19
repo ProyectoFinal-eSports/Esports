@@ -1,20 +1,25 @@
 package com.esports.controllers.admin;
 
-import com.esports.model.dto.GameDTO;
-import com.esports.model.dto.TournamentDTO;
-import com.esports.model.dto.TournamentFormDTO;
-import com.esports.model.entity.Game;
-import com.esports.service.GameService;
-import com.esports.service.TournamentService;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpSession;
-import java.util.List;
+import com.esports.model.dto.GameDTO;
+import com.esports.model.dto.TournamentDTO;
+import com.esports.model.dto.TournamentFormDTO;
+import com.esports.service.GameService;
+import com.esports.service.TournamentService;
 
 @Controller
 @RequestMapping("/admin/tournament")
@@ -56,7 +61,7 @@ public class AdminTournamentController {
 	@GetMapping("/update")
 	public String update(@RequestParam("id") Long id, ModelMap model) {
 		List<GameDTO> games = gameService.getGameList();
-		TournamentDTO tournamentDTO=tournamentService.getTournamentById(id);
+		TournamentDTO tournamentDTO = tournamentService.getTournamentById(id);
 		TournamentFormDTO tournamentForm = new TournamentFormDTO();
 		tournamentForm.setTournament(tournamentDTO);
 		tournamentForm.setGameSelected(tournamentDTO.getGame().getId().toString());

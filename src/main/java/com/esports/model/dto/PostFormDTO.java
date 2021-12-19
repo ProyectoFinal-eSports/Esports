@@ -36,10 +36,7 @@ public class PostFormDTO {
 
 	@Override
 	public String toString() {
-		return "PostFormDTO{" +
-				"post=" + post +
-				", posts=" + (posts == null ? "" : posts.toString()) +
-				", file=" + (file == null ? "" : file.getOriginalFilename()) +
-				'}';
+		return "PostFormDTO{" + "post=" + post + ", posts=" + (posts == null ? "" : posts.toString()) + ", file="
+				+ (file == null ? "" : file.getOriginalFilename()) + '}';
 	}
 }

@@ -16,7 +16,7 @@ public class GameDTO {
 	}
 
 	public GameDTO(Long id) {
-		this.id=id;
+		this.id = id;
 	}
 
 	public GameDTO(String name, String genre, String developer, String gameplay, String imgUrl,

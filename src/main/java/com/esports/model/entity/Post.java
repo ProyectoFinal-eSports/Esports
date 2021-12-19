@@ -13,6 +13,8 @@ import javax.persistence.Table;
 @Table(name = "posts")
 public class Post {
 
+	// =======================================
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -36,6 +38,8 @@ public class Post {
 	private String imgUrl;
 
 	private Boolean registered;
+
+	// =======================================
 
 	public Post() {
 	}
@@ -61,6 +65,8 @@ public class Post {
 		this.imgUrl = imgUrl;
 		this.registered = registered;
 	}
+
+	// =======================================
 
 	public Long getId() {
 		return id;

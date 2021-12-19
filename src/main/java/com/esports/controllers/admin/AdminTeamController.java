@@ -45,11 +45,11 @@ public class AdminTeamController {
 
 		String resource = null;
 		if (teamForm.getFile() != null)
-			resource=utilService.saveResourceFile(teamForm.getFile(),
+			resource = utilService.saveResourceFile(teamForm.getFile(),
 					Constants.STATIC_FILES_PATH + Constants.IMG_UPLOAD_DIR_TEAM);
 
 		if (resource != null) {
-			resource=Constants.IMG_UPLOAD_DIR_TEAM + resource;
+			resource = Constants.IMG_UPLOAD_DIR_TEAM + resource;
 			teamDTO.setImgUrl(resource);
 		}
 
@@ -60,7 +60,7 @@ public class AdminTeamController {
 
 	@GetMapping("/update")
 	public String update(@RequestParam("id") Long id, ModelMap model) {
-		TeamDTO teamDTO=teamService.getTeamById(id);
+		TeamDTO teamDTO = teamService.getTeamById(id);
 		TeamFormDTO teamFormDTO = new TeamFormDTO();
 		teamFormDTO.setTeam(teamDTO);
 
@@ -78,11 +78,11 @@ public class AdminTeamController {
 
 		String resource = null;
 		if (teamForm.getFile() != null)
-			resource=utilService.saveResourceFile(teamForm.getFile(),
+			resource = utilService.saveResourceFile(teamForm.getFile(),
 					Constants.STATIC_FILES_PATH + Constants.IMG_UPLOAD_DIR_TEAM);
 
 		if (resource != null) {
-			resource=Constants.IMG_UPLOAD_DIR_TEAM + resource;
+			resource = Constants.IMG_UPLOAD_DIR_TEAM + resource;
 			teamDTO.setImgUrl(resource);
 		}
 

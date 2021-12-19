@@ -21,6 +21,8 @@ import javax.persistence.Table;
 @Table(name = "teams")
 public class Team {
 
+	// =======================================
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -41,6 +43,8 @@ public class Team {
 			@JoinColumn(name = "team_id", referencedColumnName = "id", nullable = false, updatable = false) }, inverseJoinColumns = {
 					@JoinColumn(name = "tournament_id", referencedColumnName = "id", nullable = false, updatable = false) })
 	private Set<Tournament> tournaments = new HashSet<>();
+
+	// =======================================
 
 	public Team() {
 	}
@@ -65,6 +69,8 @@ public class Team {
 		this.imgUrl = imgUrl;
 		this.players = players;
 	}
+
+	// =======================================
 
 	public Long getId() {
 		return id;

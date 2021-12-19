@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Table(name = "users")
 public class User {
 
-	// ================================================
+	// =======================================
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +24,7 @@ public class User {
 
 	private String email;
 
-	// ================================================
+	// =======================================
 
 	@Column(name = "security_role")
 	@Enumerated(value = EnumType.ORDINAL)
@@ -55,7 +55,7 @@ public class User {
 		this.securityRole = securityRole;
 	}
 
-	// ================================================
+	// =======================================
 
 	public Long getId() {
 		return id;
