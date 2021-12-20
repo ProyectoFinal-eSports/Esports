@@ -13,7 +13,6 @@ import com.esports.converter.GameConverter;
 import com.esports.converter.GameDTOConverter;
 import com.esports.converter.TournamentConverter;
 import com.esports.model.dto.GameDTO;
-import com.esports.model.dto.TournamentDTO;
 import com.esports.model.entity.Game;
 import com.esports.repository.GameRepository;
 import com.esports.service.GameService;
@@ -69,14 +68,13 @@ public class GameServiceImpl implements GameService {
 		game.setId(gameSaved.getId());
 
 		/*
-		for (TournamentDTO tournamentDto : game.getTournaments()) {
-			tournamentDto.setGame(gameConverter.convert(gameSaved));
-			tournamentService.saveTournament(tournamentDto);
-		}
-		*/
+		 * for (TournamentDTO tournamentDto : game.getTournaments()) {
+		 * tournamentDto.setGame(gameConverter.convert(gameSaved));
+		 * tournamentService.saveTournament(tournamentDto); }
+		 */
 
-		//final GameDTO gameDtoResponse = gameConverter.convert(gameSaved);
-		//gameDtoResponse.setTournaments(tournamentService.getTournamentsByGame(gameDtoResponse.getId()));
+		// final GameDTO gameDtoResponse = gameConverter.convert(gameSaved);
+		// gameDtoResponse.setTournaments(tournamentService.getTournamentsByGame(gameDtoResponse.getId()));
 
 		return game;
 	}

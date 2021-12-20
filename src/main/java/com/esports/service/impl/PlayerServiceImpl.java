@@ -60,4 +60,10 @@ public class PlayerServiceImpl implements PlayerService {
 		return null;
 	}
 
+	@Override
+	public void deletePlayer(Long id) {
+		playerRepository.deleteById(id);
+		
+	}
+
 }

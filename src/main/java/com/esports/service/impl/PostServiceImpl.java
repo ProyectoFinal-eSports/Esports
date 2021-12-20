@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import com.esports.model.dto.GameDTO;
-import com.esports.model.entity.Game;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +45,7 @@ public class PostServiceImpl implements PostService {
 	private List<Post> filtrarPosts(List<Post> posts) {
 		List<Post> postFiltrados = new ArrayList<>();
 		for (Post post : posts) {
-			if(post.getRegistered() != null && post.getRegistered()) {
+			if (post.getRegistered() != null && post.getRegistered()) {
 				continue;
 			}
 			postFiltrados.add(post);

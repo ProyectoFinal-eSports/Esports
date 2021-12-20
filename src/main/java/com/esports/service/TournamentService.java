@@ -2,7 +2,6 @@ package com.esports.service;
 
 import java.util.List;
 
-import com.esports.model.dto.GameDTO;
 import com.esports.model.dto.TournamentDTO;
 
 public interface TournamentService {

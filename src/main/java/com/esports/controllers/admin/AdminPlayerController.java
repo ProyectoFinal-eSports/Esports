@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.esports.model.dto.PlayerDTO;
 import com.esports.model.dto.PlayerFormDTO;
@@ -68,5 +69,12 @@ public class AdminPlayerController {
 		model.put("view", "admin/player/read");
 
 		return "_t_admin/frame";
+	}
+	
+	@GetMapping("/delete")
+	public String delete(@RequestParam("id") Long id, ModelMap model) {
+		playerService.deletePlayer(id);
+
+		return "redirect:/admin/player/read";
 	}
 }

@@ -15,5 +15,7 @@ public interface PlayerService {
 	List<PlayerDTO> getPlayersByTeam(Long teamId);
 	
 	List<PlayerDTO> getPlayersByRole(Long roleId);
+	
+	void deletePlayer(Long id);
 
 }
